@@ -15,8 +15,8 @@ class Form extends Component {
     const day = today.toString().slice(0, 4);
     const calendarDate = today.toString().slice(4, 16);
     return (
-      <div>
-        <div id='new-activity-title'>To Do</div>
+      <div className='container'>
+        <div id='new-activity-title'>To Do List</div>
         <span>{day}</span>, <span>{calendarDate}</span>
         <br />
         <form id='new-activity-form'>
@@ -25,9 +25,19 @@ class Form extends Component {
             type="text"
             name="ActivityDescription"
           />
-          <button>+</button>
-          <button>-</button>
+          <button id='input-button'>+</button>
+          <button id='delete-button'>-</button>
         </form>
+        {
+          activities.allActivities && activities.allActivities.map(activity => {
+            return (
+              <div className='activity-list' key={activity.id}>
+              <span id='activity-name'>{activity.activityDescription}</span>
+              <button id='activity-check'>check</button>
+              <button id='activity-delete'>delete</button>
+              </div>
+          )})
+        }
       </div>
     )
   }
@@ -35,7 +45,7 @@ class Form extends Component {
 
 const mapState = (state) => {
   return {
-    activities: state
+    activities: state.activity
   }
 }
 

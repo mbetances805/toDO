@@ -1,5 +1,6 @@
 body {
-  font-family: sans-serif;
+  background: #fe568b;
+  font-family: 'Roboto', sans-serif;;
 }
 
 a {
@@ -18,4 +19,46 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 85%;
+  }
+}
+
+.container {
+  width: 90%;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+}
+
+#new-activity-title {
+  font-size: 1em;
+  color: white;
+}
+
+input {
+  background: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid white;
+  margin-bottom: 15px;
+  font-size: 3em;
+}
+
+input:focus {
+  outline: 0;
+}
+
+#input-button, #delete-button {
+  height: 60px;
 }

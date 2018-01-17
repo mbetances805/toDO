@@ -13,7 +13,6 @@ const GET_ACTIVITIES = 'GET_ACTIVITIES'
 const defaultActivity = {}
 
 // ACTION CREATORS
-
 const getActivity = activity => ({type: GET_ACTIVITY, activity})
 const getActivities = activities => ({type: GET_ACTIVITIES, activities})
 // const removeActivity = activity => ({type: REMOVE_ACTIVITY, activity})
@@ -42,8 +41,8 @@ export const fetchActivities = () =>
 
 export default function reducer (state = {allActivities: []}, action) {
   switch (action.type) {
-    // case GET_ACTIVITY:
-    //   return {...state, allActivities: action.activity}
+    case GET_ACTIVITY:
+      return {...state, allActivities: action.activity}
     
     case GET_ACTIVITIES:
       return {...state, allActivities: action.activities}
