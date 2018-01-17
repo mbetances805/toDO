@@ -28,9 +28,6 @@ class Form extends Component {
           <button>+</button>
           <button>-</button>
         </form>
-        {
-          console.log('all', activities)
-        }
       </div>
     )
   }
