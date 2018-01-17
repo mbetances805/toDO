@@ -1,68 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { fetchActivities } from '../store/activity'
 
 class Form extends Component {
+  componentDidMount() {
+    this.props.getActivities();
+  }
+
   render() {
+    const { activities } = this.props
+    console.log('allActivities', activities)
+    const today = new Date();
+    const day = today.toString().slice(0, 4);
+    const calendarDate = today.toString().slice(4, 16);
     return (
       <div>
-        <div id='new-activity-title'>Add Activity</div>
+        <div id='new-activity-title'>To Do</div>
+        <span>{day}</span>, <span>{calendarDate}</span>
         <br />
         <form id='new-activity-form'>
-          <label>Activity Name</label>
-          <input
-            type="text"
-            name="ActivityName"
-          />
           <label>Activity Description</label>
           <input
             type="text"
             name="ActivityDescription"
           />
-          <label>Start Date</label>
-          <input
-            type="date"
-            name="StartTime"
-          />
-          <label>Start Time</label>
-          <input 
-            type="time"
-            name="StartTime"
-          />
-          <label>End Date</label>
-          <input
-            type="date"
-            name="EndDate"
-          />
-          <label>End Time</label>
-          <input
-            type="time"
-            name="EndTime"
-          />
-          <label>Complexity</label>
-          <input
-            type="radio"
-            name="Complexity"
-            value="Easy"
-          /> Easy
-          <input
-            type="radio"
-            name="Complexity"
-            value="Moderate"
-          /> Moderate
-          <input
-            type="radio"
-            name="Complexity"
-            value="Difficult"
-          /> Difficult
+          <button>+</button>
+          <button>-</button>
         </form>
+        {
+          console.log('all', activities)
+        }
       </div>
     )
   }
 }
 
-const mapState = null;
+const mapState = (state) => {
+  return {
+    activities: state
+  }
+}
 
-const mapDispatch = null;
+const mapDispatch = (dispatch) => ({
+  getActivities: () => {
+    dispatch(fetchActivities())
+  }
+})
 
-export default withRouter(connect(mapState, mapDispatch)(Form))
+export default withRouter(connect(mapState, mapDispatch)(Form));

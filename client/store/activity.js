@@ -40,7 +40,7 @@ export const fetchActivities = () =>
 
 // REDUCER
 
-export default function reducer (state = {allActivites: []}, action) {
+export default function reducer (state = {allActivities: []}, action) {
   switch (action.type) {
     case GET_ACTIVITY:
       return {...state, allActivities: action.activity}
