@@ -36,8 +36,8 @@ class ActivityList extends Component {
             return (
               <div className="activity-list" key={activity.id}>
               <span id="activity-name">{activity.activityDescription}</span>
-              <button id="activity-check" onClick={this.handleCheck(activity.id)}>check</button>
-              <button id="activity-delete" onClick={this.handleDelete(activity)}>delete</button>
+              <button id="activity-check" onClick={this.handleCheck(activity)}>check</button>
+              <button id="activity-delete" onClick={this.handleDelete(activity.id)}>delete</button>
               </div>
             )
         })
