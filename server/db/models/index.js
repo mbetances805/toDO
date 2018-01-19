@@ -14,6 +14,9 @@ const Activity = require('./activity')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+
+User.hasMany(Activity, {as: 'Owner'});
+
 module.exports = {
   User,
   Activity
