@@ -16,8 +16,7 @@ class ActivityList extends Component {
   }
 
   handleCheck = activity => evt => {
-
-    // this.props.updateActivity({...activitis})
+    this.props.editActivity({...activity, activityStatus: 'inactive'})
   }
 
   render() {
@@ -33,13 +32,23 @@ class ActivityList extends Component {
           .filter(activity => {
             return activity.activityDate.slice(0, 10) === comparisonDate})
           .map(activity => {
-            return (
-              <div className="activity-list" key={activity.id}>
-              <span id="activity-name">{activity.activityDescription}</span>
-              <button id="activity-check" onClick={this.handleCheck(activity)}>check</button>
-              <button id="activity-delete" onClick={this.handleDelete(activity.id)}>delete</button>
-              </div>
-            )
+            if (activity.activityStatus === 'inactive') {
+              return (
+                <div className="activity-list" key={activity.id}>
+                <span id="activity-name-inactive">{activity.activityDescription}</span>
+                <button id="activity-check" disabled={true} onClick={this.handleCheck(activity)}>check</button>
+                <button id="activity-delete" onClick={this.handleDelete(activity.id)}>delete</button>
+                </div>
+              )
+            } else {
+              return (
+                <div className="activity-list" key={activity.id}>
+                <span id="activity-name-active">{activity.activityDescription}</span>
+                <button id="activity-check" onClick={this.handleCheck(activity)}>check</button>
+                <button id="activity-delete" onClick={this.handleDelete(activity.id)}>delete</button>
+                </div>
+              )
+            }
         })
       }
       </div>

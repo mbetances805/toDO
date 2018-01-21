@@ -42,14 +42,14 @@ form div {
   justify-content: center; */
 }
 
-.wrapper {
+/* .wrapper {
   background: white;
   padding: 60px;
   width: 400px;
   border-radius: 0 0 150px 150px;
   margin: 0 auto;
   box-shadow:  0 8px 6px -6px #d2bbee;
-}
+} */
 
 #new-activity-title {
   font-size: 1em;
@@ -95,6 +95,11 @@ input:focus {
   width: 600px;
   color: #3ab2ff;
   margin: 5px auto;
+}
+
+#activity-name-inactive {
+  text-decoration: line-through;
+  text-decoration-color: black;
 }
 
 #activity-check, #activity-delete {

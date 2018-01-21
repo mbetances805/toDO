@@ -9,7 +9,8 @@ const Activity = db.define('activity', {
     type: Sequelize.DATE
   },
   activityStatus: {
-    type: Sequelize.ENUM('active', 'inactive')
+    type: Sequelize.ENUM('active', 'inactive'),
+    defaultValue: 'active'
   }
 })
 

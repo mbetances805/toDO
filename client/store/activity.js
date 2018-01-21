@@ -38,20 +38,19 @@ export const fetchActivities = (id) =>
       .catch(err => console.log(err))
 
 export const postActivity = (activity) =>
-  dispatch =>
-    axios.post(`/api/activities`, activity)
-      .then(res => res.data)
-      .then(newActivity => {
-        dispatch(addActivity(newActivity))})
-      .catch(err => console.log(err))
+  dispatch => {
+   axios.post(`/api/activities`, activity)
+      .then((res) => res.data)
+      .then((newActivity) =>
+        dispatch(addActivity(newActivity)))
+      .catch(err => console.log(err))}
 
 export const updateActivity = (activity) =>
-  dispatch =>
-    axios.post(`/api/activities/${activity.id}`, activity)
-      .then(res => res.data)
-      .then(updatedActivity => {
-        dispatch(editActivity(updatedActivity))})
-      .catch(err => console.log(err))
+  dispatch => {
+    return axios.put(`/api/activities/${activity.id}`, activity)
+      .then(() =>
+        dispatch(editActivity(activity)))
+      .catch(err => console.log(err))}
 
 export const deleteActivity = (id) =>
   dispatch =>
@@ -70,10 +69,14 @@ export default function reducer (state = {allActivities: []}, action) {
       return {...state, allActivities: action.activities}
 
     case ADD_ACTIVITY:
-      return {...state, allActivities: [...state, state.allActivities]}
+    console.log('activity', state)
+      return {...state, allActivities: [...state.allActivities, action.activity]}
 
     case REMOVE_ACTIVITY:
       return {...state, allActivities: state.allActivities.filter(activity => activity.id !== action.activity)}
+
+    case EDIT_ACTIVITY:
+      return {...state, allActivities: state.allActivities.filter(activity => activity.id !== action.activity.id).concat(action.activity)}
 
     default:
       return state;

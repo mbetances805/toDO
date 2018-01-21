@@ -12,14 +12,14 @@ class Form extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleSubmit = today => evt => {
+  handleSubmit = activityDate => evt => {
     evt.preventDefault();
     const userId = this.props.userId;
     const activityDescription = this.state.text;
-    this.props.addActivity({ activityDescription, today, userId });
+    const activityStatus = 'active';
+    this.props.addActivity({ activityDescription, activityStatus, activityDate, userId });
     this.setState({text: ''});
   }
 
@@ -27,23 +27,16 @@ class Form extends Component {
     this.setState({text: evt.target.value});
   }
 
-  handleDelete = (evt) => {
-    this.props.removeActivity((evt.target.id));
-  }
-
   render() {
     const { text } = this.state;
-    const today = new Date();
-    const currentDate = today.toString().slice(4, 15);
-    const day = today.toString().slice(0, 4);
+    const activityDate = new Date();
+    const currentDate = activityDate.toString().slice(4, 15);
+    const day = activityDate.toString().slice(0, 4);
     return (
       <div className="container">
-        <div className="wrapper">
-          <span id="day">{day}, {currentDate.toString()}</span>
-        </div>
         <br />
         <div id="new-activity-title">To Do List</div>
-        <form id="new-activity-form" onSubmit={this.handleSubmit(today)}>
+        <form id="new-activity-form" onSubmit={this.handleSubmit(activityDate)}>
           <input
             type="text"
             value={text}
@@ -52,7 +45,6 @@ class Form extends Component {
             name="ActivityDescription"
           />
           <button id="input-button" type="submit">+</button>
-          <button id="delete-button">-</button>
         </form>
         <ActivityList />
       </div>

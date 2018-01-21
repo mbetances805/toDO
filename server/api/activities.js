@@ -16,19 +16,22 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
   Activity.create({
     activityDescription: req.body.activityDescription,
-    activityDate: req.body.today,
+    activityDate: req.body.activityDate,
     userId: req.body.userId
   })
-  .then(res.sendStatus(201))
+  .then(activity => res.json(activity))
   .catch(next)
 })
 
 router.put('/:id', (req, res, next) => {
-  return Activity.update({
-    where: {
-      id: req.param.id
-    }
-  })
+  Activity.update(
+    {activityStatus: req.body.activityStatus},
+    {where: {
+      id: req.params.id
+    },
+    returning: true,
+    plain: true
+    })
   .then(res.sendStatus(202))
   .catch(next)
 })
