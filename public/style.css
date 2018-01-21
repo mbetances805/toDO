@@ -1,6 +1,6 @@
 body {
-  background: #fe568b;
-  font-family: 'Roboto', sans-serif;;
+  background: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -35,21 +35,45 @@ form div {
 }
 
 .container {
-  width: 90%;
   text-align: center;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center; */
+  justify-content: center;
 }
 
-/* .wrapper {
+.wrapper {
   background: white;
   padding: 60px;
   width: 400px;
   border-radius: 0 0 150px 150px;
   margin: 0 auto;
   box-shadow:  0 8px 6px -6px #d2bbee;
-} */
+}
+
+#navigation-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100px;
+  float:left;
+  display: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+  /* text-align: left; */
+}
+
+#navigation-open-button {
+  display: inline-block;
+  border: none;
+  outline: none;
+}
+
+#navigation-close-button {
+  display: none;
+  border: none;
+  outline: none;
+}
 
 #new-activity-title {
   font-size: 1em;
@@ -61,16 +85,20 @@ input {
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 1px solid white;
-  font-size: 12px;
+  /* border-bottom: 1px solid grey; */
+  font-size: 18px;
   padding: 15px;
   width: 600px;
   margin: 0 auto;
-  color: white;
+  color: darkviolet;
 }
 
 input:focus {
   outline: 0;
+}
+
+input::placeholder {
+  font-size: 12px;
 }
 
 #input-button, #delete-button {
@@ -99,7 +127,8 @@ input:focus {
 
 #activity-name-inactive {
   text-decoration: line-through;
-  text-decoration-color: black;
+  text-decoration-color: lightgrey;
+  color: lightgrey;
 }
 
 #activity-check, #activity-delete {
@@ -108,8 +137,44 @@ input:focus {
 
 #day {
   font-size: 30px;
+  text-align: center;
+  color: #3ab2ff;
 }
 
 #navigation-bar {
   text-align: center;
 }
+
+.animation-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-top: 10em;
+}
+
+.welcome-animation {
+  animation: typing 4s steps(80, end),
+    blink-caret .3s step-end infinite;
+  overflow: hidden;
+  border-right: .15em solid darkviolet;
+  letter-spacing: .15em;
+  white-space: nowrap;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  width: 400px;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 400px }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: darkviolet }
+}
+
+/* #space1, #space2 {
+  width: 33%;
+} */

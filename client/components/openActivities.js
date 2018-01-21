@@ -1,11 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+import ActivityList from './activityList'
 
 class OpenActivities extends Component {
   render () {
+    const today = new Date();
+    const day = today.toString().slice(0, 3)
+    const monthDate = today.toString().slice(4, 10)
     return (
-      <div>OpenActivities</div>
+      <div>
+        <div className="wrapper">
+          <div id="day">{day},</div>
+          <div id="day">{monthDate}</div>
+        </div>
+        <ActivityList />
+      </div>
     )
   }
 }

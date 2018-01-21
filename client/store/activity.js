@@ -70,7 +70,7 @@ export default function reducer (state = {allActivities: []}, action) {
 
     case ADD_ACTIVITY:
     console.log('activity', state)
-      return {...state, allActivities: [...state.allActivities, action.activity]}
+      return {...state, allActivities: [action.activity, ...state.allActivities]}
 
     case REMOVE_ACTIVITY:
       return {...state, allActivities: state.allActivities.filter(activity => activity.id !== action.activity)}

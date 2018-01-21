@@ -30,8 +30,6 @@ class Form extends Component {
   render() {
     const { text } = this.state;
     const activityDate = new Date();
-    const currentDate = activityDate.toString().slice(4, 15);
-    const day = activityDate.toString().slice(0, 4);
     return (
       <div className="container">
         <br />
@@ -44,7 +42,6 @@ class Form extends Component {
             placeholder="What do you have to accomplish today?"
             name="ActivityDescription"
           />
-          <button id="input-button" type="submit">+</button>
         </form>
         <ActivityList />
       </div>
