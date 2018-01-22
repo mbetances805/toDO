@@ -11,8 +11,7 @@ class OpenActivities extends Component {
     return (
       <div>
         <div className="wrapper">
-          <div id="day">{day},</div>
-          <div id="day">{monthDate}</div>
+          <span id="day" style={{color: '#8cb7e9'}}>{day}, </span><span id="day">{monthDate}</span>
         </div>
         <ActivityList />
       </div>

@@ -10,6 +10,9 @@ import gitHub from '../../images/GitHub-Mark-32px.png'
 import linkedIn from '../../images/In-2C-34px-R.png'
 import user from '../../images/user.png'
 import home from '../../images/home.png'
+import add from '../../images/add-button-inside-black-circle.png'
+import exit from '../../images/exit.png'
+import listing from '../../images/listing-option.png'
 /**
  * COMPONENT
  *  The Main component is our 'picture frame' - it displays the navbar and anything
@@ -30,7 +33,7 @@ class Main extends Component {
     const clickMenu = () => {
       this.setState({show: !this.state.show});
       if (this.state.show) {
-        document.getElementById('navigation-bar').style.display = 'inline'
+        document.getElementById('navigation-bar').style.display = 'inline-block'
         document.getElementById('navigation-close-button').style.display = 'inline-block'
         document.getElementById('navigation-open-button').style.display = 'none'
       } else {
@@ -43,10 +46,9 @@ class Main extends Component {
     if (isLoggedIn) {
       navBar = (
         <div>
-         <Link to="/home">HOME</Link>
-         <Link to="/new">ADD ACTIVITY</Link>
-         <Link to="/list">TO DO LIST</Link>
-         <a href="#" onClick={handleClick}>LOGOUT</a>
+         <Link to="/list"><img src={listing} alt="HOME" /></Link>
+         <Link to="/new"><img src={add} alt="ADD ACTIVITY" /></Link>
+         <a href="#" onClick={handleClick}><img src={exit} alt="LOGOUT" /></a>
         </div>
       )
      } else {

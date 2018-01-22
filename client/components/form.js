@@ -39,7 +39,7 @@ class Form extends Component {
             type="text"
             value={text}
             onChange={this.handleChange}
-            placeholder="What do you have to accomplish today?"
+            placeholder="What do you have to do today?"
             name="ActivityDescription"
           />
         </form>

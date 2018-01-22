@@ -39,28 +39,32 @@ form div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: left 1s ease;
 }
 
 .wrapper {
   background: white;
-  padding: 60px;
+  padding: 30px;
   width: 400px;
-  border-radius: 0 0 150px 150px;
+  text-align: center;
   margin: 0 auto;
-  box-shadow:  0 8px 6px -6px #d2bbee;
 }
 
 #navigation-bar {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  width: 100px;
-  float:left;
+  /* justify-content: left; */
+  float: left;
+  width: 50px;
   display: none;
-  margin: 0;
-  padding: 0;
-  margin-right: 10px;
-  /* text-align: left; */
+  /* margin: 0; */
+  /* padding: 0; */
+  /* margin-right: 10px; */
+  top: 10px;
+  left: 0;
+  bottom: 0;
+  position: relative;
+  z-index: 4;
 }
 
 #navigation-open-button {
@@ -103,7 +107,6 @@ input::placeholder {
 
 #input-button, #delete-button {
   height: 25px;
-  /* margin-bottom: 10px; */
   color: black;
 }
 
@@ -115,14 +118,18 @@ input::placeholder {
 .activity-list {
   background: white;
   padding: 20px;
-  box-shadow: 2px 2px 2px #d2bbee;
-  border-radius: 15px 50px 30px;
+  box-shadow: 2px 2px 2px lightgrey;
   border-style: solid;
   border-width: thin;
   border-color: #8cb7e9;
   width: 600px;
-  color: #3ab2ff;
+  color: black;
   margin: 5px auto;
+  transition: left 0.5s ease;
+}
+
+.activity-list:hover {
+  border-color: darkviolet;
 }
 
 #activity-name-inactive {
@@ -131,14 +138,15 @@ input::placeholder {
   color: lightgrey;
 }
 
-#activity-check, #activity-delete {
+.activity-check, .activity-delete {
   float: right;
+  border: none;
+  outline: none;
 }
 
 #day {
   font-size: 30px;
-  text-align: center;
-  color: #3ab2ff;
+  color: black;
 }
 
 #navigation-bar {
@@ -153,7 +161,7 @@ input::placeholder {
 }
 
 .welcome-animation {
-  animation: typing 4s steps(80, end),
+  animation: typing 1s steps(80, end),
     blink-caret .3s step-end infinite;
   overflow: hidden;
   border-right: .15em solid darkviolet;
@@ -175,6 +183,27 @@ input::placeholder {
   50% { border-color: darkviolet }
 }
 
-/* #space1, #space2 {
-  width: 33%;
-} */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  padding: 150px;
+}
+
+.login-field {
+  text-align: left;
+  padding: 10px;
+}
+
+.login-button {
+  background: black;
+  color: white;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  outline: none;
+}

@@ -69,7 +69,6 @@ export default function reducer (state = {allActivities: []}, action) {
       return {...state, allActivities: action.activities}
 
     case ADD_ACTIVITY:
-    console.log('activity', state)
       return {...state, allActivities: [action.activity, ...state.allActivities]}
 
     case REMOVE_ACTIVITY:
