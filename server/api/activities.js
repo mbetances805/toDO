@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Activity } = require('../db/models');
+const { Op } = require('sequelize');
 module.exports = router;
 
 router.get('/:id', (req, res, next) => {
@@ -35,16 +36,6 @@ router.put('/:id', (req, res, next) => {
   .then(res.sendStatus(202))
   .catch(next)
 })
-
-// router.delete('/', (req, res, next) => {
-//   Activity.destroy({
-//     where: {
-//       activityDate: { [Op.lt]: today() }
-//     }
-//   })
-//   .then(() => res.sendStatus(204))
-//   .catch(next)
-// })
 
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id

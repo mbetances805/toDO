@@ -7,7 +7,6 @@ const GET_ACTIVITIES = 'GET_ACTIVITIES'
 const REMOVE_ACTIVITY = 'REMOVE_ACTIVITY'
 const ADD_ACTIVITY = 'ADD_ACTIVITY'
 const EDIT_ACTIVITY = 'EDIT_ACTIVITY'
-// const ALERT_ACTIVITY = 'ALERT_ACTIVITY'
 
 // INITIAL STATE
 const defaultActivity = {}
@@ -18,11 +17,9 @@ const getActivities = activities => ({type: GET_ACTIVITIES, activities})
 const removeActivity = activity => ({type: REMOVE_ACTIVITY, activity})
 const addActivity = activity => ({type: ADD_ACTIVITY, activity})
 const editActivity = activity => ({type: EDIT_ACTIVITY, activity})
-// const alertActivity = activity => ({type: ALERT_ACTIVITY, activity})
 
 
 // THUNK CREATORS
-
 export const fetchActivity = (id) =>
   dispatch =>
     axios.get(`/api/activities/${id}`)
@@ -59,7 +56,6 @@ export const deleteActivity = (id) =>
     .catch(err => console.log(err))
 
 // REDUCER
-
 export default function reducer (state = {allActivities: []}, action) {
   switch (action.type) {
     case GET_ACTIVITY:
