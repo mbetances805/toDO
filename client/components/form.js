@@ -16,11 +16,22 @@ class Form extends Component {
 
   handleSubmit = activityDate => evt => {
     evt.preventDefault();
-    const userId = this.props.userId;
-    const activityDescription = this.state.text;
-    const activityStatus = 'active';
-    this.props.addActivity({ activityDescription, activityStatus, activityDate, userId });
-    this.setState({text: ''});
+    if (this.state.text === '') {
+      const warning = document.createElement('p');
+      const textNode = document.createTextNode('Please enter an activity to submit!')
+      warning.appendChild(textNode);
+      warning.setAttribute('id', 'warning-p')
+      document.getElementById('new-activity-form').appendChild(warning);
+    } else {
+      if (document.getElementById('warning-p')) {
+        document.getElementById('new-activity-form').removeChild(document.getElementById('warning-p'))
+      }
+      const userId = this.props.userId;
+      const activityDescription = this.state.text;
+      const activityStatus = 'active';
+      this.props.addActivity({ activityDescription, activityStatus, activityDate, userId });
+      this.setState({text: ''});
+    }
   }
 
   handleChange = (evt) => {
