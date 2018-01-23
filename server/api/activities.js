@@ -36,6 +36,16 @@ router.put('/:id', (req, res, next) => {
   .catch(next)
 })
 
+// router.delete('/', (req, res, next) => {
+//   Activity.destroy({
+//     where: {
+//       activityDate: { [Op.lt]: today() }
+//     }
+//   })
+//   .then(() => res.sendStatus(204))
+//   .catch(next)
+// })
+
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id
   Activity.destroy({

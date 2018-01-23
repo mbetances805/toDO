@@ -33,13 +33,13 @@ class Main extends Component {
     const clickMenu = () => {
       this.setState({show: !this.state.show});
       if (this.state.show) {
-        document.getElementById('navigation-bar').style.display = 'inline-block'
-        document.getElementById('navigation-close-button').style.display = 'inline-block'
-        document.getElementById('navigation-open-button').style.display = 'none'
+        document.getElementById('navigation-bar').style.visibility = 'visible'
+        document.getElementById('navigation-close-button').style.display = 'visible'
+        document.getElementById('navigation-open-button').style.display = 'hidden'
       } else {
-        document.getElementById('navigation-bar').style.display = 'none'
-        document.getElementById('navigation-close-button').style.display = 'none'
-        document.getElementById('navigation-open-button').style.display = 'inline-block'
+        document.getElementById('navigation-bar').style.visibility = 'hidden'
+        document.getElementById('navigation-close-button').style.display = 'hidden'
+        document.getElementById('navigation-open-button').style.display = 'visible'
       }
     }
 

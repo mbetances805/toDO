@@ -22,15 +22,21 @@ form div {
   margin: 0 auto;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 620px) {
   .container {
     width: 50%;
+  }
+  #navigation-bar {
+    width: 50%
   }
 }
 
 @media screen and (min-width: 1024px) {
   .container {
     width: 85%;
+  }
+  #navigation-bar {
+    width:85%
   }
 }
 
@@ -40,6 +46,8 @@ form div {
   flex-direction: column;
   justify-content: center;
   transition: left 1s ease;
+  text-align: center;
+  top: 0px;
 }
 
 .wrapper {
@@ -51,20 +59,14 @@ form div {
 }
 
 #navigation-bar {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: left; */
+  display: 'inline-block';
+  visibility: hidden;
+  /* flex-direction: column; */
   float: left;
-  width: 50px;
-  display: none;
-  /* margin: 0; */
-  /* padding: 0; */
-  /* margin-right: 10px; */
-  top: 10px;
+  width: 100px;
+  top: 100px;
   left: 0;
   bottom: 0;
-  position: relative;
-  z-index: 4;
 }
 
 #navigation-open-button {
@@ -125,7 +127,7 @@ input::placeholder {
   width: 600px;
   color: black;
   margin: 5px auto;
-  transition: left 0.5s ease;
+  text-align: center;
 }
 
 .activity-list:hover {

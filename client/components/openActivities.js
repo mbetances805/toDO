@@ -10,10 +10,12 @@ class OpenActivities extends Component {
     const monthDate = today.toString().slice(4, 10)
     return (
       <div>
-        <div className="wrapper">
-          <span id="day" style={{color: '#8cb7e9'}}>{day}, </span><span id="day">{monthDate}</span>
+        <div className="container">
+          <div className="wrapper">
+            <span id="day" style={{color: '#8cb7e9'}}>{day}, </span><span id="day">{monthDate}</span>
+          </div>
+          <ActivityList />
         </div>
-        <ActivityList />
       </div>
     )
   }
