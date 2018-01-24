@@ -33,8 +33,8 @@ class Routes extends Component {
                   <Route path="/list" component={OpenActivities} />
                 </Switch>
             }
-            {/* Displays our Login component as a fallback */}
-            <Route component={Login} />
+            {/* Displays our Welcome component as a fallback */}
+            <Route component={Welcome} />
           </Switch>
         </Main>
       </Router>
