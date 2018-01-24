@@ -5,10 +5,8 @@ import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import browser from '../../images/login.png'
 import navOpenIcon from '../../images/arrow-point-to-right.png'
-import navCloseIcon from '../../images/scroll-arrow-to-left.png'
 import user from '../../images/profile.png'
 import home from '../../images/home_copy.png'
-import add from '../../images/square-add-button.png'
 import exit from '../../images/exit.png'
 import listing from '../../images/list.png'
 import gitHub from '../../images/GitHub-Mark-32px.png'
@@ -20,24 +18,21 @@ class Main extends Component {
     this.state = {
       show: false
     }
+    this.hoverMenu = this.hoverMenu.bind(this);
   }
+
+  hoverMenu = () => {
+    this.setState({show: !this.state.show});
+    if (this.state.show) {
+      document.getElementById('navigation-bar').style.visibility = 'hidden';
+    } else {
+      document.getElementById('navigation-bar').style.visibility = 'visible';
+    }
+  };
 
   render() {
     const {children, handleClick, isLoggedIn} = this.props;
     let navBar = null;
-
-    const clickMenu = () => {
-      this.setState({show: !this.state.show});
-      if (this.state.show) {
-        document.getElementById('navigation-bar').style.visibility = 'visible';
-        document.getElementById('navigation-close-button').style.display = 'visible';
-        document.getElementById('navigation-open-button').style.display = 'hidden';
-      } else {
-        document.getElementById('navigation-bar').style.visibility = 'hidden';
-        document.getElementById('navigation-close-button').style.display = 'hidden';
-        document.getElementById('navigation-open-button').style.display = 'visible';
-      }
-    }
 
     if (isLoggedIn) {
       navBar = (
@@ -61,9 +56,8 @@ class Main extends Component {
 
     return (
       <div>
-          <button id="navigation-open-button"><img src={navOpenIcon} alt="nav" onClick={clickMenu} /></button>
-          <nav id="navigation-bar">
-          <button id="navigation-close-button"><img src={navCloseIcon} alt="nav" onClick={clickMenu} /></button>
+          <button id="navigation-open-button"><img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} /></button>
+          <nav id="navigation-bar" onMouseLeave={this.hoverMenu}>
           {
             navBar
           }

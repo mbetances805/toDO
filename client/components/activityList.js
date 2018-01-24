@@ -7,6 +7,8 @@ import check from '../../images/checked.png'
 import binHover from '../../images/rubbish-bin-hover.png'
 import checkHover from '../../images/checked-hover.png'
 import checkDisabled from '../../images/checked-disabled.png'
+import PropTypes from 'prop-types'
+
 
 class ActivityList extends Component {
   constructor() {
@@ -119,20 +121,28 @@ class ActivityList extends Component {
 }
 
 const mapState = state => ({
-  userId: state.user.id,
-  activities: state.activity
+  activities: state.activity,
+  userId: state.user.id
 });
 
 const mapDispatch = dispatch => ({
-  removeActivity: (id) => {
-    dispatch(deleteActivity(id))
+  editActivity: (id) => {
+    dispatch(updateActivity(id))
   },
   getActivities: (id) => {
     dispatch(fetchActivities(id))
   },
-  editActivity: (id) => {
-    dispatch(updateActivity(id))
+  removeActivity: (id) => {
+    dispatch(deleteActivity(id))
   }
 });
 
 export default withRouter(connect(mapState, mapDispatch)(ActivityList))
+
+ActivityList.propTypes = {
+  userId: PropTypes.number.isRequired,
+  activities: PropTypes.object,
+  editActivity: PropTypes.func.isRequired,
+  getActivities: PropTypes.func.isRequired,
+  removeActivity: PropTypes.func.isRequired
+};

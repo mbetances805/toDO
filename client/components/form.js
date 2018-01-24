@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { postActivity } from '../store/activity'
-import ActivityList from './activityList'
+import PropTypes from 'prop-types'
 
 class Form extends Component {
   constructor() {
@@ -63,8 +63,7 @@ class Form extends Component {
 
 const mapState = (state) => {
   return {
-    userId: state.user.id,
-    activities: state.activity
+    userId: state.user.id
   }
 };
 
@@ -75,3 +74,8 @@ const mapDispatch = (dispatch) => ({
 });
 
 export default withRouter(connect(mapState, mapDispatch)(Form));
+
+Form.propTypes = {
+  userId: PropTypes.number.isRequired,
+  addActivity: PropTypes.func.isRequired
+};

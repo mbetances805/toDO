@@ -156,13 +156,13 @@ input::placeholder {
 
 .welcome-animation {
   overflow: hidden;
-  border-right: .15em solid darkviolet;
-  letter-spacing: .15em;
+  border-right: .1em solid darkviolet;
+  letter-spacing: .1em;
   white-space: nowrap;
   margin: 2em 1em;
   font-family: 'Roboto', sans-serif;
-  width: 500px;
-  -webkit-animation: typing 2s steps(40, end),
+  width: 455px;
+  -webkit-animation: typing 2s steps(30, end),
     blink-caret .2s step-end infinite alternate;
 }
 
