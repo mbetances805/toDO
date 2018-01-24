@@ -2,20 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import ActivityList from './activityList'
+import Form from './form'
+import Footer from './footer'
 
 class OpenActivities extends Component {
   render () {
     const today = new Date();
-    const day = today.toString().slice(0, 3)
-    const monthDate = today.toString().slice(4, 10)
+    const day = today.toString().slice(0, 3);
+    const monthDate = today.toString().slice(4, 10);
     return (
       <div>
         <div className="container">
           <div className="wrapper">
             <span id="day" style={{color: '#8cb7e9'}}>{day}, </span><span id="day">{monthDate}</span>
           </div>
+          <Form />
           <ActivityList />
         </div>
+        <Footer />
       </div>
     )
   }

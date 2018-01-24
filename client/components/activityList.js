@@ -16,6 +16,7 @@ class ActivityList extends Component {
       buttonBinHover: ''
     }
   }
+
   componentDidMount() {
     const { userId } = this.props;
     this.props.getActivities(userId);
@@ -27,11 +28,11 @@ class ActivityList extends Component {
 
   handleDelete = id => evt => {
     this.props.removeActivity(id);
-  }
+  };
 
   handleCheck = activity => evt => {
     this.props.editActivity({...activity, activityStatus: 'inactive'})
-  }
+  };
 
   handleCheckHover = element => evt => {
     if (Number(this.state.buttonCheckHover === element)) {
@@ -39,7 +40,7 @@ class ActivityList extends Component {
     } else {
       this.setState({buttonCheckHover: element})
     }
-  }
+  };
 
   handleBinHover = element => evt => {
     if (Number(this.state.buttonBinHover === element)) {
@@ -47,22 +48,18 @@ class ActivityList extends Component {
     } else {
       this.setState({buttonBinHover: element})
     }
-  }
+  };
 
 
   render() {
     const { activities }  = this.props;
     const today = new Date();
-    // const utcTime = today.getUTCHours();
-    // const estTime = new Date();
-    // estTime.setHours(utcTime - 5);
-
     const comparisonDate = today.getFullYear() + '-' +
       (('0' + (today.getMonth() + 1)).slice(-2)) + '-' +
       (('0' + today.getDate()).slice(-2)).toString();
 
     return (
-      <div>
+      <div >
         {
           activities.allActivities && activities.allActivities
           .filter(activity => {
@@ -124,7 +121,7 @@ class ActivityList extends Component {
 const mapState = state => ({
   userId: state.user.id,
   activities: state.activity
-})
+});
 
 const mapDispatch = dispatch => ({
   removeActivity: (id) => {
@@ -136,6 +133,6 @@ const mapDispatch = dispatch => ({
   editActivity: (id) => {
     dispatch(updateActivity(id))
   }
-})
+});
 
 export default withRouter(connect(mapState, mapDispatch)(ActivityList))

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
@@ -6,47 +6,113 @@ import {auth} from '../store'
 /**
  * COMPONENT
  */
-const AuthForm = (props) => {
-  const {name, displayName, handleSubmit, error} = props
-
-  return (
-    <div className="login-form">
-    <div>Welcome.</div>
-    {
-      displayName === 'Login' ? <div>Please Log In.</div> : <div>Please Sign Up.</div>
+class AuthForm  extends Component {
+  constructor () {
+    super()
+    this.state = {
+      validSignUp: false,
+      emailTest: false,
+      passwordTest: false
     }
-      <form onSubmit={handleSubmit} name={name}>
-        <div className="login-field">
-          <label htmlFor="email"><small>Email</small></label>
-          <input name="email" type="text" />
-        </div> <br />
-        <div className="login-field">
-          <label htmlFor="password"><small>Password</small></label>
-          <input name="password" type="password" />
-        </div> <br />
-        <div>
-          <button className="login-button" type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-    </div>
-  )
+    this.validateFields = this.validateFields.bind(this);
+    this.validateSignUp = this.validateSignUp.bind(this);
+    this.showPasswordMin = this.showPasswordMin.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if ((prevState.passwordTest !== this.state.passwordTest) || prevState.emailTest !== this.state.emailTest) {
+      this.validateSignUp();
+    }
+  }
+
+  validateFields = (evt) => {
+    if (evt.target.name === 'email') {
+      this.setState({emailTest: (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(evt.target.value))})
+    }
+    if (evt.target.name === 'password' && evt.target.value.length >= 6) {
+      this.setState({passwordTest: true})
+    } else if (evt.target.name === 'password' && evt.target.value.length < 6){
+      this.setState({passwordTest: false})
+    }
+  };
+
+  validateSignUp = () => {
+    if (this.state.emailTest && this.state.passwordTest) {
+      this.setState({validSignUp: true})
+    } else {
+      this.setState({validSignUp: false})
+    }
+  };
+
+  showPasswordMin = (evt) => {
+    const passMessage = document.getElementById(`${evt.target.name}-message`);
+    if (this.props.displayName === 'Sign Up') {
+      if (passMessage.style.display === 'inline-block') {
+        passMessage.style.display = 'none'
+      } else {
+        passMessage.style.display = 'inline-block'
+      }
+    }
+  };
+
+  render () {
+    const {name, displayName, handleSubmit, error} = this.props;
+
+    return (
+      <div className="login-form">
+      <div>Welcome.</div>
+      {
+        displayName === 'Login' ? <div>Please Log In.</div> : <div>Please Sign Up.</div>
+      }
+        <form onSubmit={handleSubmit} name={name}>
+          <div className="login-field">
+            <label htmlFor="email"><small>Email</small></label>
+            <input
+              id="email-field"
+              name="email"
+              type="text"
+              onChange={this.validateFields}
+              onMouseEnter={this.showPasswordMin}
+              onMouseLeave={this.showPasswordMin}
+            />
+          </div> <br />
+          <div className="login-field">
+            <label htmlFor="password"><small>Password</small></label>
+            <input
+              name="password"
+              type="password"
+              onChange={this.validateFields}
+              onMouseEnter={this.showPasswordMin}
+              onMouseLeave={this.showPasswordMin}
+              />
+          </div>
+          <br />
+          <span id="email-message">Please enter a valid email address.</span>
+          <span id="password-message">Min Password Length: 6 characters.</span>
+          <br />
+          <div>
+          {
+            this.state.validSignUp  ?
+              <button className="login-button" type="submit">{displayName}</button>
+              : <button className="login-button" type="submit" disabled>{displayName}</button>
+          }
+          </div><br />
+          <div>
+            {error && error.response && <div> {error.response.data} </div>}
+          </div>
+        </form>
+      </div>
+    )
+  }
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = (state) => {
   return {
     name: 'login',
     displayName: 'Login',
     error: state.user.error
   }
-}
+};
 
 const mapSignup = (state) => {
   return {
@@ -54,7 +120,7 @@ const mapSignup = (state) => {
     displayName: 'Sign Up',
     error: state.user.error
   }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
@@ -66,10 +132,10 @@ const mapDispatch = (dispatch) => {
       dispatch(auth(email, password, formName))
     }
   }
-}
+};
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(mapLogin, mapDispatch)(AuthForm);
+export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
 
 /**
  * PROP TYPES
@@ -79,4 +145,4 @@ AuthForm.propTypes = {
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.object
-}
+};

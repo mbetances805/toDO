@@ -17,11 +17,13 @@ class Form extends Component {
   handleSubmit = activityDate => evt => {
     evt.preventDefault();
     if (this.state.text === '') {
-      const warning = document.createElement('p');
-      const textNode = document.createTextNode('Please enter an activity to submit!')
-      warning.appendChild(textNode);
-      warning.setAttribute('id', 'warning-p')
-      document.getElementById('new-activity-form').appendChild(warning);
+      if (!document.getElementById('warning-p')){
+        const warning = document.createElement('p');
+        const textNode = document.createTextNode('Please enter an activity to submit!')
+        warning.appendChild(textNode);
+        warning.setAttribute('id', 'warning-p')
+        document.getElementById('new-activity-form').appendChild(warning);
+      }
     } else {
       if (document.getElementById('warning-p')) {
         document.getElementById('new-activity-form').removeChild(document.getElementById('warning-p'))
@@ -36,13 +38,13 @@ class Form extends Component {
 
   handleChange = (evt) => {
     this.setState({text: evt.target.value});
-  }
+  };
 
   render() {
     const { text } = this.state;
     const activityDate = new Date();
     return (
-      <div className="container">
+      <div>
         <br />
         <div id="new-activity-title">To Do List</div>
         <form id="new-activity-form" onSubmit={this.handleSubmit(activityDate)}>
@@ -54,7 +56,6 @@ class Form extends Component {
             name="ActivityDescription"
           />
         </form>
-        <ActivityList />
       </div>
     )
   }
@@ -65,12 +66,12 @@ const mapState = (state) => {
     userId: state.user.id,
     activities: state.activity
   }
-}
+};
 
 const mapDispatch = (dispatch) => ({
   addActivity: (activity) => {
     dispatch(postActivity(activity));
   }
-})
+});
 
 export default withRouter(connect(mapState, mapDispatch)(Form));

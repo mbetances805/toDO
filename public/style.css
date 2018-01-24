@@ -50,20 +50,12 @@ form div {
   top: 0px;
 }
 
-.wrapper {
-  background: white;
-  padding: 30px;
-  width: 400px;
-  text-align: center;
-  margin: 0 auto;
-}
-
 #navigation-bar {
   display: 'inline-block';
   visibility: hidden;
   /* flex-direction: column; */
   float: left;
-  width: 150px;
+  width: 100px;
   top: 100px;
   left: 0;
   bottom: 0;
@@ -127,7 +119,7 @@ input::placeholder {
   width: 600px;
   color: black;
   margin: 5px auto;
-  text-align: center;
+  text-align: left;
 }
 
 .activity-list:hover {
@@ -163,26 +155,23 @@ input::placeholder {
 }
 
 .welcome-animation {
-  animation: typing 1s steps(80, end),
-    blink-caret .3s step-end infinite;
   overflow: hidden;
   border-right: .15em solid darkviolet;
   letter-spacing: .15em;
   white-space: nowrap;
-  margin: 0 auto;
+  margin: 2em 1em;
   font-family: 'Roboto', sans-serif;
-  align-items: center;
-  width: 400px;
+  width: 500px;
+  -webkit-animation: typing 2s steps(40, end),
+    blink-caret .2s step-end infinite alternate;
 }
 
-@keyframes typing {
+@-webkit-keyframes typing {
   from { width: 0 }
-  to { width: 400px }
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: darkviolet }
+@-webkit-keyframes blink-caret {
+  50% { border-color: transparent }
 }
 
 .login-form {
@@ -208,4 +197,23 @@ input::placeholder {
   text-align: center;
   border-radius: 10px 10px 10px 10px;
   outline: none;
+  padding: 10px;
+}
+
+.login-button[disabled] {
+  background: lightgrey;
+}
+
+#footer {
+  padding-top: 550px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#external-icons {
+  padding: 10px;
+}
+
+#password-message, #email-message {
+  display: none;
 }

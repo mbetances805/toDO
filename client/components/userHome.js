@@ -7,10 +7,10 @@ import ActivityList from './activityList'
  * COMPONENT
  */
 export const UserHome = (props) => {
-  const {email} = props
+  const {email} = props;
   const today = new Date();
-  const day = today.toString().slice(0, 3)
-  const monthDate = today.toString().slice(4, 10)
+  const day = today.toString().slice(0, 3);
+  const monthDate = today.toString().slice(4, 10);
   return (
     <div>
       <h3 style={{textAlign: 'center'}}>Welcome, <br /> {email}</h3>
@@ -30,7 +30,7 @@ const mapState = (state) => {
   return {
     email: state.user.email
   }
-}
+};
 
 export default connect(mapState)(UserHome)
 
@@ -39,4 +39,4 @@ export default connect(mapState)(UserHome)
  */
 UserHome.propTypes = {
   email: PropTypes.string
-}
+};

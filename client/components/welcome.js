@@ -6,7 +6,7 @@ const Welcome = () => {
   return (
     <div className="animation-wrapper">
       <h1 className="welcome-animation">
-        Track your to do list.
+        Track your daily to do list.
       </h1>
     </div>
   )
