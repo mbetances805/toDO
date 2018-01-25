@@ -11,6 +11,7 @@ import exit from '../../images/exit.png'
 import listing from '../../images/list.png'
 import gitHub from '../../images/GitHub-Mark-32px.png'
 import linkedIn from '../../images/In-2C-34px-R.png'
+import screenCast from '../../images/youtube-symbol.png'
 
 class Main extends Component {
   constructor() {
@@ -50,6 +51,7 @@ class Main extends Component {
           <hr />
           <div id="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></div>
           <div id="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></div>
+          <div id="external-icons"><a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} alt="screencast" /></a></div>
         </div>
       )
      }
