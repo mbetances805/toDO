@@ -35,7 +35,6 @@ form div {
 #navigation-bar {
   display: 'inline-block';
   visibility: hidden;
-  /* flex-direction: column; */
   float: left;
   width: 80px;
   top: 100px;
@@ -65,8 +64,7 @@ input {
   border-top: none;
   border-right: none;
   border-left: none;
-  /* border-bottom: 1px solid grey; */
-  font-size: 2vmin;
+  font-size: 16px;
   padding: 15px;
   width: 600px;
   margin: 0 auto;
@@ -78,7 +76,7 @@ input:focus {
 }
 
 input::placeholder {
-  font-size: 2vmin;
+  font-size: 14px;
 }
 
 #input-button, #delete-button {
@@ -89,10 +87,6 @@ input::placeholder {
 #input-button:hover, #delete-button:hover {
   color: darkviolet;
   font-weight: bold;
-}
-
-#new-activity-form {
-  font-size: 14px;
 }
 
 .activity-list {
@@ -160,8 +154,7 @@ input::placeholder {
   white-space: nowrap;
   margin: 2em 1em;
   font-family: 'Roboto', sans-serif;
-  /* width: 455px; */
-  -webkit-animation: typing 2s steps(30, end),
+  -webkit-animation: typing 1s steps(30, end),
     blink-caret .2s step-end infinite alternate;
 }
 
@@ -213,7 +206,7 @@ input::placeholder {
   padding: 20px;
   display: 'block';
   text-align: center;
-  width: 100%;
+  /* width: 100%; */
 }
 
 #footer {
@@ -258,9 +251,7 @@ input::placeholder {
   }
   #footer {
     text-align: center;
-  }
-  #new-activity-form {
-    font-size: 14pt;
+    padding-left: 200px;
   }
 }
 
@@ -284,15 +275,13 @@ input::placeholder {
   }
   #footer {
     text-align: center;
+    padding-left: 0;
   }
   #day {
     margin: 0 auto;
     float: center;
     text-align: center;
     font-size: 2em;
-  }
-  #new-activity-form {
-    font-size: 14pt;
   }
 }
 
@@ -343,5 +332,8 @@ input::placeholder {
   .activity-list {
     font-size: 16px;
     width: 600px;
+  }
+  #footer {
+    padding-left: 0;
   }
 }
