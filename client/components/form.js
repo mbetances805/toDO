@@ -46,7 +46,6 @@ class Form extends Component {
     return (
       <div>
         <br />
-        <div id="new-activity-title">To Do List</div>
         <form id="new-activity-form" onSubmit={this.handleSubmit(activityDate)}>
           <input
             type="text"

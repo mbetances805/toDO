@@ -61,7 +61,7 @@ class ActivityList extends Component {
       (('0' + today.getDate()).slice(-2)).toString();
 
     return (
-      <div >
+      <div>
         {
           activities.allActivities && activities.allActivities
           .filter(activity => {
@@ -75,9 +75,9 @@ class ActivityList extends Component {
               return (
                 <div className="activity-list" key={activity.id}>
                   <span id="activity-name-inactive">{activity.activityDescription}</span>
-                  <button className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
-                    <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></button>
-                  <button
+                  <div className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
+                    <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></div>
+                  <div
                     className="activity-delete" onClick={this.handleDelete(activity.id)}
                       onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
                     {
@@ -85,14 +85,14 @@ class ActivityList extends Component {
                         <img src={binHover} alt="delete" id={`delete-button${activity.id}`} />
                         : <img src={bin} alt="delete" id={`delete-button${activity.id}`} />
                     }
-                  </button>
+                  </div>
                 </div>
               )
             } else {
               return (
                 <div className="activity-list" key={activity.id}>
                 <span id="activity-name-active">{activity.activityDescription}</span>
-                <button
+                <div
                   className="activity-check" onClick={this.handleCheck(activity)}
                     onMouseEnter={this.handleCheckHover(activity.id)} onMouseLeave={this.handleCheckHover(activity.id)}>
                   {
@@ -100,8 +100,8 @@ class ActivityList extends Component {
                       <img src={checkHover} alt="check" id={`check-button${activity.id}`} />
                       : <img src={check} alt="check" id={`check-button${activity.id}`}  />
                   }
-                </button>
-                <button
+                </div>
+                <div
                   className="activity-delete" onClick={this.handleDelete(activity.id)}
                     onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
                   {
@@ -109,7 +109,7 @@ class ActivityList extends Component {
                       <img src={binHover} alt="delete" id={`delete-button${activity.id}`} />
                       : <img src={bin} alt="delete" id={`delete-button${activity.id}`} />
                   }
-                </button>
+                </div>
                 </div>
               )
             }

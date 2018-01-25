@@ -44,9 +44,9 @@ class Main extends Component {
      } else {
        navBar = (
         <div>
-          <Link to="/welcome"><img src={home} alt="Home" /></Link>
-          <Link to="/login"><img src={browser} alt="Login" /></Link>
-          <Link to="/signup"><img src={user} alt="Sign Up" /></Link>
+          <Link to="/welcome"><img src={home} className="navigation-icons" alt="Home" /></Link>
+          <Link to="/login"><img src={browser} className="navigation-icons" alt="Login" /></Link>
+          <Link to="/signup"><img src={user} className="navigation-icons" alt="Sign Up" /></Link>
           <hr />
           <div id="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></div>
           <div id="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></div>
@@ -56,7 +56,7 @@ class Main extends Component {
 
     return (
       <div>
-          <button id="navigation-open-button"><img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} /></button>
+          <div id="navigation-open-button"><img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} onClick={this.hoverMenu}/></div>
           <nav id="navigation-bar" onMouseLeave={this.hoverMenu}>
           {
             navBar

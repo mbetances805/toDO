@@ -60,9 +60,9 @@ class AuthForm  extends Component {
 
     return (
       <div className="login-form">
-      <div>Welcome.</div>
+      <div className="login-title">Welcome.</div>
       {
-        displayName === 'Login' ? <div>Please Log In.</div> : <div>Please Sign Up.</div>
+        displayName === 'Login' ? <div className="login-title">Please Log In.</div> : <div className="login-title">Please Sign Up.</div>
       }
         <form onSubmit={handleSubmit} name={name}>
           <div className="login-field">

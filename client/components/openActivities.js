@@ -19,7 +19,9 @@ class OpenActivities extends Component {
           <Form />
           <ActivityList />
         </div>
-        <Footer />
+        <div id="footer-holder">
+          <Footer />
+        </div>
       </div>
     )
   }

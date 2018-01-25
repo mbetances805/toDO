@@ -15,8 +15,7 @@ export const UserHome = (props) => {
     <div>
       <h3 style={{textAlign: 'center'}}>Welcome, <br /> {email}</h3>
       <div className="wrapper">
-        <div id="day">{day},</div>
-        <div id="day">{monthDate}</div>
+        <div id="day">{day}, {monthDate}</div>
       </div>
       <ActivityList />
     </div>

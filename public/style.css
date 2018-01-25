@@ -17,27 +17,9 @@ nav a {
 }
 
 form div {
-  margin: 1em;
+  margin: 1vmin;
   display: inline-block;
   margin: 0 auto;
-}
-
-@media screen and (min-width: 620px) {
-  .container {
-    width: 50%;
-  }
-  #navigation-bar {
-    width: 50%
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .container {
-    width: 85%;
-  }
-  #navigation-bar {
-    width:85%
-  }
 }
 
 .container {
@@ -55,7 +37,7 @@ form div {
   visibility: hidden;
   /* flex-direction: column; */
   float: left;
-  width: 100px;
+  width: 80px;
   top: 100px;
   left: 0;
   bottom: 0;
@@ -63,14 +45,14 @@ form div {
 
 #navigation-open-button {
   display: inline-block;
-  border: none;
-  outline: none;
+  border: 0 !important;
+  outline: 0 !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-#navigation-close-button {
-  display: none;
-  border: none;
-  outline: none;
+.navigation-icons {
+  display: 'block';
+  padding: 10px;
 }
 
 #new-activity-title {
@@ -84,7 +66,7 @@ input {
   border-right: none;
   border-left: none;
   /* border-bottom: 1px solid grey; */
-  font-size: 18px;
+  font-size: 2vmin;
   padding: 15px;
   width: 600px;
   margin: 0 auto;
@@ -96,7 +78,7 @@ input:focus {
 }
 
 input::placeholder {
-  font-size: 12px;
+  font-size: 2vmin;
 }
 
 #input-button, #delete-button {
@@ -136,15 +118,25 @@ input::placeholder {
   float: right;
   border: none;
   outline: none;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.wrapper {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  width: 100%;
 }
 
 #day {
-  font-size: 30px;
+  font-size: 3vmin;
   color: black;
 }
 
 #navigation-bar {
   text-align: center;
+  width: 100px;
 }
 
 .animation-wrapper {
@@ -152,16 +144,19 @@ input::placeholder {
   justify-content: space-around;
   flex-direction: column;
   padding-top: 10em;
+  width: 500px;
+  display: 'inline-block';
 }
 
 .welcome-animation {
   overflow: hidden;
+  font-size: 30px;
   border-right: .1em solid darkviolet;
   letter-spacing: .1em;
   white-space: nowrap;
   margin: 2em 1em;
   font-family: 'Roboto', sans-serif;
-  width: 455px;
+  /* width: 455px; */
   -webkit-animation: typing 2s steps(30, end),
     blink-caret .2s step-end infinite alternate;
 }
@@ -181,12 +176,17 @@ input::placeholder {
   flex-wrap: wrap;
   align-content: center;
   text-align: center;
-  padding: 150px;
+  padding: 10vmin 1rem;
+  width: 1vmin 1rem;
+}
+
+.login-title {
+  text-align: center;
 }
 
 .login-field {
   text-align: left;
-  padding: 10px;
+  padding: 20px;
 }
 
 .login-button {
@@ -204,10 +204,18 @@ input::placeholder {
   background: lightgrey;
 }
 
-#footer {
-  padding-top: 550px;
+#footer-holder {
+  bottom: 0;
+  position: fixed;
   text-align: center;
-  font-size: 12px;
+  width: 100%;
+}
+
+#footer {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: 1.5vmin;
 }
 
 #external-icons {
@@ -216,4 +224,107 @@ input::placeholder {
 
 #password-message, #email-message {
   display: none;
+}
+
+@media screen and (max-width: 640px), (orientation: landscape) {
+  .container {
+    width: 30%;
+    padding-right: 100px;
+  }
+  #navigation-bar {
+    width: 20%;
+  }
+  .login-title {
+    text-align: left;
+    padding-left: 20px;
+  }
+  .animation-wrapper {
+    width: 75%;
+  }
+  .welcome-animation {
+    font-size: 18px;
+    width: 100%;
+  }
+  #footer {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 750px), (orientation: landscape) {
+  .container {
+    width: 30%;
+  }
+  #navigation-bar {
+    width: 10%;
+  }
+  .login-title {
+    text-align: left;
+    padding-left: 30px;
+  }
+  .animation-wrapper {
+    width: 90%;
+  }
+  .welcome-animation {
+    font-size: 30px;
+    width: 65%;
+  }
+  #footer {
+    text-align: center;
+  }
+  #day {
+    margin: 0 auto;
+    float: center;
+    text-align: center;
+    font-size: 2em;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .container {
+    width: 70%;
+    padding-left: 150px;
+    font-size: 3vmin;
+  }
+  #navigation-bar {
+    width: 5%;
+  }
+  .login-title {
+    text-align: center;
+  }
+  .animation-wrapper {
+    width: 80%;
+  }
+  .welcome-animation {
+    font-size: 40px;
+    width: 70%;
+  }
+  .activity-list {
+    font-size: 20px;
+    width: 600px;
+  }
+}
+
+@media all and (min-width: 1934px) {
+  .container {
+    width: 70%;
+    padding-left: 150px;
+    font-size: 3vmin;
+  }
+  #navigation-bar {
+    width: 5%;
+  }
+  .login-title {
+    text-align: center;
+  }
+  .animation-wrapper {
+    width: 90%;
+  }
+  .welcome-animation {
+    font-size: 40px;
+    width: 40%;
+  }
+  .activity-list {
+    font-size: 20px;
+    width: 600px;
+  }
 }
