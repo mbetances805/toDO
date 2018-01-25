@@ -206,7 +206,8 @@ input::placeholder {
 
 #footer-holder {
   bottom: 0;
-  position: fixed;
+  padding: 20px;
+  display: 'block';
   text-align: center;
   width: 100%;
 }
@@ -224,6 +225,12 @@ input::placeholder {
 
 #password-message, #email-message {
   display: none;
+}
+
+#warning-p {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 640px), (orientation: landscape) {
@@ -248,7 +255,6 @@ input::placeholder {
   #footer {
     text-align: center;
   }
-}
 
 @media screen and (min-width: 750px), (orientation: landscape) {
   .container {
@@ -296,10 +302,10 @@ input::placeholder {
   }
   .welcome-animation {
     font-size: 40px;
-    width: 70%;
+    width: 45%;
   }
   .activity-list {
-    font-size: 20px;
+    font-size: 16px;
     width: 600px;
   }
 }
@@ -324,7 +330,7 @@ input::placeholder {
     width: 40%;
   }
   .activity-list {
-    font-size: 20px;
+    font-size: 16px;
     width: 600px;
   }
 }

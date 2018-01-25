@@ -19,7 +19,7 @@ class Form extends Component {
     if (this.state.text === '') {
       if (!document.getElementById('warning-p')){
         const warning = document.createElement('p');
-        const textNode = document.createTextNode('Please enter an activity to submit!')
+        const textNode = document.createTextNode('Please enter an activity!')
         warning.appendChild(textNode);
         warning.setAttribute('id', 'warning-p')
         document.getElementById('new-activity-form').appendChild(warning);
