@@ -17,7 +17,7 @@ nav a {
 }
 
 form div {
-  margin: 1vmin;
+  margin: 14pt;
   display: inline-block;
   margin: 0 auto;
 }
@@ -89,6 +89,10 @@ input::placeholder {
 #input-button:hover, #delete-button:hover {
   color: darkviolet;
   font-weight: bold;
+}
+
+#new-activity-form {
+  font-size: 14px;
 }
 
 .activity-list {
@@ -255,6 +259,10 @@ input::placeholder {
   #footer {
     text-align: center;
   }
+  #new-activity-form {
+    font-size: 14pt;
+  }
+}
 
 @media screen and (min-width: 750px), (orientation: landscape) {
   .container {
@@ -282,6 +290,9 @@ input::placeholder {
     float: center;
     text-align: center;
     font-size: 2em;
+  }
+  #new-activity-form {
+    font-size: 14pt;
   }
 }
 
