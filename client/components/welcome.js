@@ -5,9 +5,9 @@ import { withRouter } from 'react-router'
 const Welcome = () => {
   return (
     <div className="animation-wrapper">
-      <h1 className="welcome-animation">
+      <span className="welcome-animation">
         Track your daily to do list.
-      </h1>
+      </span>
     </div>
   )
 }

@@ -69,12 +69,13 @@ class ActivityList extends Component {
             const activityDate = utcTime.getFullYear() + '-' +
               (('0' + (utcTime.getMonth() + 1)).slice(-2)) + '-' +
               (('0' + utcTime.getDate()).slice(-2)).toString();
-            return activityDate === comparisonDate})
+            return activityDate === comparisonDate || activity.activityStatus === 'active'
+          })
           .map(activity => {
             if (activity.activityStatus === 'inactive') {
               return (
                 <div className="activity-list" key={activity.id}>
-                  <span id="activity-name-inactive">{activity.activityDescription}</span>
+                  <span className="activity-name-inactive">{activity.activityDescription}</span>
                   <div className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
                     <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></div>
                   <div
@@ -91,7 +92,7 @@ class ActivityList extends Component {
             } else {
               return (
                 <div className="activity-list" key={activity.id}>
-                <span id="activity-name-active">{activity.activityDescription}</span>
+                <span className="activity-name-active">{activity.activityDescription}</span>
                 <div
                   className="activity-check" onClick={this.handleCheck(activity)}
                     onMouseEnter={this.handleCheckHover(activity.id)} onMouseLeave={this.handleCheckHover(activity.id)}>

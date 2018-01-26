@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <div id='footer'>
       <p>Website created by Maria Betances, Full Stack Developer.
-        <span id="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></span>
-        <span id="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></span>
+        <span className="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></span>
+        <span className="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></span>
       </p>
         <div>Icons from <a href="https://www.flaticon.com/"
           title="Flaticon">www.flaticon.com</a> are licensed by <a href="http://creativecommons.org/licenses/by/3.0/"

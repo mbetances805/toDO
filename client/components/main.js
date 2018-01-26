@@ -38,8 +38,8 @@ class Main extends Component {
     if (isLoggedIn) {
       navBar = (
         <div>
-         <Link to="/list"><img src={listing} alt="HOME" /></Link>
-         <a href="#" onClick={handleClick}><img src={exit} alt="LOGOUT" /></a>
+         <Link to="/list"><img src={listing} className="navigation-icons" alt="Home" /></Link>
+         <a href="#" onClick={handleClick}><img src={exit} className="navigation-icons" alt="Logout" /></a>
         </div>
       )
      } else {
@@ -49,9 +49,9 @@ class Main extends Component {
           <Link to="/login"><img src={browser} className="navigation-icons" alt="Login" /></Link>
           <Link to="/signup"><img src={user} className="navigation-icons" alt="Sign Up" /></Link>
           <hr />
-          <div id="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></div>
-          <div id="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></div>
-          <div id="external-icons"><a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} alt="screencast" /></a></div>
+          <div className="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></div>
+          <div className="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></div>
+          <div className="external-icons"><a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} alt="screencast" /></a></div>
         </div>
       )
      }
@@ -59,7 +59,7 @@ class Main extends Component {
     return (
       <div>
           <div id="navigation-open-button"><img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} onClick={this.hoverMenu}/></div>
-          <nav id="navigation-bar" onMouseLeave={this.hoverMenu}>
+          <nav id="navigation-bar">
           {
             navBar
           }

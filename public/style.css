@@ -16,6 +16,8 @@ nav a {
   margin: 1em;
 }
 
+/* FORMS */
+
 form div {
   margin: 14pt;
   display: inline-block;
@@ -35,23 +37,20 @@ form div {
 #navigation-bar {
   display: 'inline-block';
   visibility: hidden;
-  float: left;
+  position: fixed;
   width: 80px;
-  top: 100px;
+  top: 20px;
   left: 0;
   bottom: 0;
 }
 
 #navigation-open-button {
-  display: inline-block;
-  border: 0 !important;
-  outline: 0 !important;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  display: 'inline-block';
 }
 
 .navigation-icons {
-  display: 'block';
-  padding: 10px;
+  display: 'inline-block';
+  padding-top: 20px;
 }
 
 #new-activity-title {
@@ -89,84 +88,6 @@ input::placeholder {
   font-weight: bold;
 }
 
-.activity-list {
-  background: white;
-  padding: 20px;
-  box-shadow: 2px 2px 2px lightgrey;
-  border-style: solid;
-  border-width: thin;
-  border-color: #8cb7e9;
-  width: 600px;
-  color: black;
-  margin: 5px auto;
-  text-align: left;
-}
-
-.activity-list:hover {
-  border-color: darkviolet;
-}
-
-#activity-name-inactive {
-  text-decoration: line-through;
-  text-decoration-color: lightgrey;
-  color: lightgrey;
-}
-
-.activity-check, .activity-delete {
-  float: right;
-  border: none;
-  outline: none;
-  padding-right: 10px;
-  vertical-align: middle;
-}
-
-.wrapper {
-  position: relative;
-  text-align: center;
-  align-content: center;
-  width: 100%;
-}
-
-.day{
-  font-size: 3vmin;
-  color: black;
-}
-
-#navigation-bar {
-  text-align: center;
-  width: 100px;
-}
-
-.animation-wrapper {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  padding-top: 10em;
-  width: 500px;
-  display: 'inline-block';
-}
-
-.welcome-animation {
-  overflow: hidden;
-  font-size: 30px;
-  border-right: .1em solid darkviolet;
-  letter-spacing: .1em;
-  white-space: nowrap;
-  margin: 2em 1em;
-  font-family: 'Roboto', sans-serif;
-  -webkit-animation: blink-caret .2s step-end infinite alternate;
-  /* -webkit-animation: typing 1s steps(30, end),
-    blink-caret .2s step-end infinite alternate; */
-}
-
-@-webkit-keyframes typing {
-  from { width: 0 }
-}
-
-@-webkit-keyframes blink-caret {
-  50% { border-color: transparent }
-}
-
 .login-form {
   display: flex;
   flex-direction: column;
@@ -202,27 +123,53 @@ input::placeholder {
   background: lightgrey;
 }
 
-#footer-holder {
-  bottom: 0;
-  padding: 20px;
-  display: 'block';
-  text-align: center;
-  /* width: 100%; */
-}
-
-#footer {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  font-size: 1.5vmin;
-}
-
-#external-icons {
-  padding: 10px;
-}
-
 #password-message, #email-message {
   display: none;
+}
+
+/* TO DO LIST */
+
+.activity-list {
+  background: white;
+  padding: 20px;
+  box-shadow: 2px 2px 2px lightgrey;
+  border-style: solid;
+  border-width: thin;
+  border-color: #8cb7e9;
+  width: 600px;
+  color: black;
+  margin: 5px auto;
+  text-align: left;
+}
+
+.activity-list:hover {
+  border-color: darkviolet;
+}
+
+.activity-name-inactive {
+  text-decoration: line-through;
+  text-decoration-color: lightgrey;
+  color: lightgrey;
+}
+
+.activity-check, .activity-delete {
+  float: right;
+  border: none;
+  outline: none;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.wrapper {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  width: 100%;
+}
+
+.day{
+  font-size: 3vmin;
+  color: black;
 }
 
 #warning-p {
@@ -231,113 +178,57 @@ input::placeholder {
   width: 100%;
 }
 
-@media screen and (max-width: 640px), (orientation: landscape) {
-  .container {
-    width: 30%;
-    padding-right: 100px;
-  }
-  #navigation-bar {
-    width: 20%;
-  }
-  .login-title {
-    text-align: left;
-    padding-left: 20px;
-  }
-  .animation-wrapper {
-    width: 75%;
-  }
-  .welcome-animation {
-    font-size: 16px;
-  }
-  #footer {
-    text-align: center;
-    padding-left: 200px;
-  }
+/* WELCOME PAGE */
+
+#navigation-bar {
+  text-align: center;
+  width: 50px;
 }
 
-@media screen and (min-width: 750px), (orientation: landscape) {
-  .container {
-    width: 30%;
-  }
-  #navigation-bar {
-    width: 10%;
-  }
-  .login-title {
-    text-align: left;
-    padding-left: 30px;
-  }
-  /* .animation-wrapper {
-    width: 90%;
-  } */
-  .welcome-animation {
-    font-size: 30px;
-    -webkit-animation: none;
-    border-right: none;
-    /* width: 65%; */
-  }
-  #footer {
-    text-align: center;
-    padding-left: 0;
-  }
-  #day {
-    margin: 0 auto;
-    float: center;
-    text-align: center;
-    font-size: 2em;
-  }
+.animation-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(5, 20%);
+  grid-column: 3;
+  padding-top: 5em;
+  display: 'inline-block';
 }
 
-@media all and (min-width: 1024px) {
-  .container {
-    width: 70%;
-    padding-left: 150px;
-    font-size: 3vmin;
-  }
-  #navigation-bar {
-    width: 5%;
-  }
-  .login-title {
-    text-align: center;
-  }
-  .animation-wrapper {
-    width: 80%;
-  }
-  .welcome-animation {
-    font-size: 40px;
-    -webkit-animation: none;
-    border-right: none;
-    /* width: 45%; */
-  }
-  .activity-list {
-    font-size: 16px;
-    width: 600px;
-  }
+.welcome-animation {
+  grid-column: 2 / span 5;
+  overflow: hidden;
+  font-size: 2em;
+  font-size: 2.5vw;
+  /* border-right: .1em solid darkviolet; */
+  letter-spacing: .1em;
+  white-space: nowrap;
+  font-family: 'Roboto', sans-serif;
+  -webkit-animation: typing 1s steps(30, end),
+    blink-caret .2s step-end 3 alternate;
 }
 
-@media all and (min-width: 1934px) {
-  .container {
-    width: 70%;
-    padding-left: 150px;
-    font-size: 3vmin;
-  }
-  #navigation-bar {
-    width: 5%;
-  }
-  .login-title {
-    text-align: center;
-  }
-  /* .animation-wrapper {
-    width: 90%;
-  } */
-  .welcome-animation {
-    font-size: 40px;
-    /* width: 40%; */
-  }
-  .activity-list {
-    font-size: 16px;
-    width: 600px;
-  }
-  #footer {
-    padding-left: 0;
-  }
+@-webkit-keyframes typing {
+  from { width: 0 }
+  to {width: 100%}
+}
+
+@-webkit-keyframes blink-caret {
+  50% { border-color: transparent }
+}
+
+/* FOOTER */
+
+#footer-holder {
+  bottom: 0;
+  padding: 20px;
+  display: 'block';
+  text-align: center;
+  min-width: 550px;
+}
+
+#footer {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 1.5vmin;
 }
