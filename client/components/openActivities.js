@@ -14,7 +14,7 @@ class OpenActivities extends Component {
       <div>
         <div className="container">
           <div className="wrapper">
-            <span id="day" style={{color: '#8cb7e9'}}>{day}, </span><span id="day">{monthDate}</span>
+            <span className="day" style={{color: '#8cb7e9'}}>{day}, </span><span className="day">{monthDate}</span>
           </div>
           <Form />
           <ActivityList />

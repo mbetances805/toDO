@@ -127,7 +127,7 @@ input::placeholder {
   width: 100%;
 }
 
-#day {
+.day{
   font-size: 3vmin;
   color: black;
 }
@@ -154,8 +154,9 @@ input::placeholder {
   white-space: nowrap;
   margin: 2em 1em;
   font-family: 'Roboto', sans-serif;
-  -webkit-animation: typing 1s steps(30, end),
-    blink-caret .2s step-end infinite alternate;
+  -webkit-animation: blink-caret .2s step-end infinite alternate;
+  /* -webkit-animation: typing 1s steps(30, end),
+    blink-caret .2s step-end infinite alternate; */
 }
 
 @-webkit-keyframes typing {
@@ -246,8 +247,7 @@ input::placeholder {
     width: 75%;
   }
   .welcome-animation {
-    font-size: 18px;
-    width: 100%;
+    font-size: 16px;
   }
   #footer {
     text-align: center;
@@ -266,12 +266,14 @@ input::placeholder {
     text-align: left;
     padding-left: 30px;
   }
-  .animation-wrapper {
+  /* .animation-wrapper {
     width: 90%;
-  }
+  } */
   .welcome-animation {
     font-size: 30px;
-    width: 65%;
+    -webkit-animation: none;
+    border-right: none;
+    /* width: 65%; */
   }
   #footer {
     text-align: center;
@@ -302,7 +304,9 @@ input::placeholder {
   }
   .welcome-animation {
     font-size: 40px;
-    width: 45%;
+    -webkit-animation: none;
+    border-right: none;
+    /* width: 45%; */
   }
   .activity-list {
     font-size: 16px;
@@ -322,12 +326,12 @@ input::placeholder {
   .login-title {
     text-align: center;
   }
-  .animation-wrapper {
+  /* .animation-wrapper {
     width: 90%;
-  }
+  } */
   .welcome-animation {
     font-size: 40px;
-    width: 40%;
+    /* width: 40%; */
   }
   .activity-list {
     font-size: 16px;
