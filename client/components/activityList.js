@@ -26,6 +26,7 @@ class ActivityList extends Component {
     this.handleCheck = this.handleCheck.bind(this);
     this.handleCheckHover = this.handleCheckHover.bind(this);
     this.handleBinHover = this.handleBinHover.bind(this);
+    this.convertToUTCTime = this.convertToUTCTime.bind(this);
   }
 
   handleDelete = id => evt => {
@@ -33,7 +34,7 @@ class ActivityList extends Component {
   };
 
   handleCheck = activity => evt => {
-    this.props.editActivity({...activity, activityStatus: 'inactive'})
+    this.props.editActivity({...activity, activityStatus: 'inactive', updatedAt: Date.now()})
   };
 
   handleCheckHover = element => evt => {
@@ -51,25 +52,27 @@ class ActivityList extends Component {
       this.setState({buttonBinHover: element})
     }
   };
+  
+  convertToUTCTime = date => {
+    const utcTime = new Date(date);
+    return utcTime.getFullYear() + '-' +
+      (('0' + (utcTime.getMonth() + 1)).slice(-2)) + '-' +
+      (('0' + utcTime.getDate()).slice(-2)).toString();
+  };
 
 
   render() {
     const { activities }  = this.props;
-    const today = new Date();
-    const comparisonDate = today.getFullYear() + '-' +
-      (('0' + (today.getMonth() + 1)).slice(-2)) + '-' +
-      (('0' + today.getDate()).slice(-2)).toString();
-
+    const comparisonDate = this.convertToUTCTime(Date.now());
+    
     return (
       <div>
         {
           activities.allActivities && activities.allActivities
           .filter(activity => {
-            const utcTime = new Date(activity.activityDate);
-            const activityDate = utcTime.getFullYear() + '-' +
-              (('0' + (utcTime.getMonth() + 1)).slice(-2)) + '-' +
-              (('0' + utcTime.getDate()).slice(-2)).toString();
-            return activityDate === comparisonDate || activity.activityStatus === 'active'
+            const updatedDateUTC = this.convertToUTCTime(activity.updatedAt);
+            console.log('updatedDateUTC', activity.activityDescription, updatedDateUTC)
+            return updatedDateUTC === comparisonDate || activity.activityStatus === 'active'
           })
           .map(activity => {
             if (activity.activityStatus === 'inactive') {

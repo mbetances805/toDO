@@ -27,7 +27,8 @@ router.post('/', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   Activity.update(
-    {activityStatus: req.body.activityStatus},
+    {activityStatus: req.body.activityStatus,
+    updatedAt: req.body.updatedAt},
     {where: {
       id: req.params.id
     },

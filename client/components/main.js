@@ -17,9 +17,23 @@ class Main extends Component {
   constructor() {
     super()
     this.state = {
-      show: false
+      show: false,
+      width: 0,
+      height: 0
     }
     this.hoverMenu = this.hoverMenu.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.selectNavBarIcons = this.selectNavBarIcons.bind(this);
+    this.selectNavBarStyle = this.selectNavBarStyle.bind(this);
+  }
+  
+  componentDidMount() {
+    this.updateWindowDimensions()
+    window.addEventListener('resize', this.updateWindowDimensions)
+  }
+  
+  componentWillUnmount() {
+    window.removeEventLister('resize', this.updateWindowDimensions)
   }
 
   hoverMenu = () => {
@@ -30,40 +44,68 @@ class Main extends Component {
       document.getElementById('navigation-bar').style.visibility = 'visible';
     }
   };
-
-  render() {
-    const {children, handleClick, isLoggedIn} = this.props;
-    let navBar = null;
-
-    if (isLoggedIn) {
-      navBar = (
+  
+  updateWindowDimensions = () => {
+    this.setState({width: window.innerWidth, height: window.innerHeight})
+  };
+  
+  selectNavBarIcons = () => {
+    if (this.props.isLoggedIn) {
+      return (
         <div>
          <Link to="/list"><img src={listing} className="navigation-icons" alt="Home" /></Link>
-         <a href="#" onClick={handleClick}><img src={exit} className="navigation-icons" alt="Logout" /></a>
+         <a href="#" onClick={this.handleClick}><img src={exit} className="navigation-icons" alt="Logout" /></a>
         </div>
       )
      } else {
-       navBar = (
+       return (
         <div>
           <Link to="/welcome"><img src={home} className="navigation-icons" alt="Home" /></Link>
           <Link to="/login"><img src={browser} className="navigation-icons" alt="Login" /></Link>
           <Link to="/signup"><img src={user} className="navigation-icons" alt="Sign Up" /></Link>
-          <hr />
-          <div className="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></div>
-          <div className="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></div>
-          <div className="external-icons"><a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} alt="screencast" /></a></div>
         </div>
       )
      }
+  }
+  
+  selectNavBarStyle = () => {
+    if (this.state.width <= 750) {
+      return (
+        <nav id='mobile-navigation-bar'>
+        {
+          this.selectNavBarIcons()
+        }
+        </nav>
+      )
+    } else {
+      return (
+        <div>
+          <div id='top-left-corner-icons'>
+            <a href="https://github.com/mbetances805/toDO"><img src={gitHub} className="navigation-icons" alt="github" /></a>
+            <a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} className="navigation-icons" alt="linkedIn" /></a>
+            <a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} className="navigation-icons" alt="screencast" /></a>
+          </div>
+          <div id="navigation-open-button">
+            <img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} onClick={this.hoverMenu} />
+          </div>
+          <nav id='navigation-bar'>
+          {
+            this.selectNavBarIcons()
+          }
+          </nav>
+        </div>
+      )
+    }
+  }
 
+  render() {
+    const {children, handleClick, isLoggedIn} = this.props;
+    
     return (
       <div>
-          <div id="navigation-open-button"><img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} onClick={this.hoverMenu}/></div>
-          <nav id="navigation-bar">
           {
-            navBar
+            this.selectNavBarStyle()
           }
-        </nav>
         {children}
       </div>
     )

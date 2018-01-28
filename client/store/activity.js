@@ -45,8 +45,10 @@ export const postActivity = (activity) =>
 export const updateActivity = (activity) =>
   dispatch => {
     return axios.put(`/api/activities/${activity.id}`, activity)
-      .then(() =>
-        dispatch(editActivity(activity)))
+      .then(() => {
+        dispatch(editActivity(activity))
+        console.log('api activity', activity)
+      })
       .catch(err => console.log(err))};
 
 export const deleteActivity = (id) =>

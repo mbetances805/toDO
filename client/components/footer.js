@@ -7,10 +7,7 @@ import linkedIn from '../../images/In-2C-34px-R.png'
 const Footer = () => {
   return (
     <div id='footer'>
-      <p>Website created by Maria Betances, Full Stack Developer.
-        <span className="external-icons"><a href="https://github.com/mbetances805/toDO"><img src={gitHub} alt="github" /></a></span>
-        <span className="external-icons"><a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} alt="linkedIn" /></a></span>
-      </p>
+      <p>Website created by Maria Betances, Full Stack Software Engineer.</p>
         <div>Icons from <a href="https://www.flaticon.com/"
           title="Flaticon">www.flaticon.com</a> are licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
           title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
