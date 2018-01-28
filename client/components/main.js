@@ -88,7 +88,7 @@ class Main extends Component {
       return (
         <div>
           <div id="navigation-open-button">
-            <span><img src={navOpenIcon} alt="nav" onClick={this.hoverMenu} /></span>
+            <span><img src={navOpenIcon} onClick={this.hoverMenu} alt="nav" /></span>
           </div>
           <nav id='navigation-bar'>
             <span><img src={navCloseIcon} style={{paddingTop: '10px'}} onClick={this.hoverMenu} className="navigation-icons" alt="close"/></span>

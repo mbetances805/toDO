@@ -188,6 +188,7 @@ input::placeholder {
   text-align: center;
   align-content: center;
   width: 100%;
+  z-index: -1;
 }
 
 .day {
@@ -272,6 +273,7 @@ input::placeholder {
     align-self: center;
     border-radius: 20px;
     border-top-right-radius: 20px;
+    position: fixed;
   }
   
   #top-right-corner-icons {
@@ -295,8 +297,8 @@ input::placeholder {
   }
   
   .login-title {
-    text-align: left;
-    padding-left: 5%;
+    text-align: center;
+    margin-left: 15%;
   }
   
   .day {
@@ -313,8 +315,13 @@ input::placeholder {
     margin-left: 100%;
   }
   
-  .wrapper {
+  .login-title {
     text-align: left;
     margin-left: 5%;
+  }
+  
+  .wrapper {
+    text-align: left;
+    margin-left: 3%;
   }
 }
