@@ -39,13 +39,12 @@ form div {
   padding-right: 20px;
   visibility: hidden;
   position: absolute;
-  width: 80px;
-  top: 20px;
+  width: 30px;
   left: 0;
-  bottom: 0;
+  top: 0;
 }
 
-#mobile-navigation-bar {
+.mobile-navigation-bar {
   display: inline-flex;
   bottom: 0;
   width: 100%;
@@ -53,7 +52,7 @@ form div {
   position: fixed;
   z-index: 2;
   bottom: 0;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: row;
   flex-wrap: nowrap;
   align-self: center;
@@ -63,10 +62,15 @@ form div {
 
 #navigation-open-button {
   display: 'inline-block';
-  padding-left: 50px;
+  position: absolute;
 }
 
-#top-left-corner-icons {
+#top-right-logged {
+  /* top: 0;
+  right: 0; */
+}
+
+#top-right-corner-icons {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,7 +82,10 @@ form div {
 
 .navigation-icons {
   display: 'inline-block';
-  padding: 10px;
+}
+
+.navigation-icons-logged {
+  display: 'inline-block';
 }
 
 #new-activity-title {
@@ -124,7 +131,6 @@ input::placeholder {
   align-content: center;
   text-align: center;
   padding: 10vmin 1rem;
-  width: 1vmin 1rem;
 }
 
 .login-title {
@@ -144,6 +150,7 @@ input::placeholder {
   text-align: center;
   border-radius: 10px 10px 10px 10px;
   outline: none;
+  align-self: 'center';
   padding: 10px;
 }
 
@@ -217,23 +224,24 @@ input::placeholder {
 .animation-wrapper {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(5, 20%);
   grid-column: 3;
-  padding-top: 5em;
+  padding-top: 250px;
+  align-self: center;
   display: 'inline-block';
 }
 
 .welcome-animation {
-  grid-column: 2 / span 5;
+  grid-column: 3 / span 7;
+  grid-row: 4 / span 3;
   overflow: hidden;
   font-size: 2em;
-  font-size: 2.5vw;
-  /* border-right: .1em solid darkviolet; */
+  font-size: 4vw;
+  border-right: .1em solid darkviolet;
   letter-spacing: .1em;
   white-space: nowrap;
   font-family: 'Roboto', sans-serif;
   -webkit-animation: typing 1s steps(30, end),
-    blink-caret .2s step-end 3 alternate;
+    blink-caret .2s step-end infinite alternate;
 }
 
 @-webkit-keyframes typing {

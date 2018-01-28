@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import browser from '../../images/login.png'
-import navOpenIcon from '../../images/arrow-point-to-right.png'
+import navOpenIcon from '../../images/menu.png'
 import user from '../../images/profile.png'
 import home from '../../images/home_copy.png'
 import exit from '../../images/exit.png'
@@ -12,6 +12,7 @@ import listing from '../../images/list.png'
 import gitHub from '../../images/GitHub-Mark-32px.png'
 import linkedIn from '../../images/In-2C-34px-R.png'
 import screenCast from '../../images/youtube-symbol.png'
+import navCloseIcon from '../../images/left-arrow.png'
 
 class Main extends Component {
   constructor() {
@@ -40,8 +41,10 @@ class Main extends Component {
     this.setState({show: !this.state.show});
     if (this.state.show) {
       document.getElementById('navigation-bar').style.visibility = 'hidden';
+      document.getElementById('navigation-open-button').style.visibility = 'visible';
     } else {
       document.getElementById('navigation-bar').style.visibility = 'visible';
+      document.getElementById('navigation-open-button').style.visibility = 'hidden';
     }
   };
   
@@ -53,45 +56,56 @@ class Main extends Component {
     if (this.props.isLoggedIn) {
       return (
         <div>
-         <Link to="/list"><img src={listing} className="navigation-icons" alt="Home" /></Link>
-         <a href="#" onClick={this.handleClick}><img src={exit} className="navigation-icons" alt="Logout" /></a>
+         <Link to="/list"><img src={listing} className="navigation-icons-logged" alt="Home" /></Link>
+         <a href="#" onClick={this.props.handleClick}><img src={exit} className="navigation-icons-logged" alt="Logout" /></a>
         </div>
       )
      } else {
        return (
         <div>
-          <Link to="/welcome"><img src={home} className="navigation-icons" alt="Home" /></Link>
-          <Link to="/login"><img src={browser} className="navigation-icons" alt="Login" /></Link>
-          <Link to="/signup"><img src={user} className="navigation-icons" alt="Sign Up" /></Link>
+          <Link to="/welcome"><img src={home} onClick={this.hoverMenu} className="navigation-icons" alt="Home" /></Link>
+          <Link to="/login"><img src={browser} onClick={this.hoverMenu} className="navigation-icons" alt="Login" /></Link>
+          <Link to="/signup"><img src={user} onClick={this.hoverMenu} className="navigation-icons" alt="Sign Up" /></Link>
         </div>
       )
      }
   }
   
   selectNavBarStyle = () => {
+    let navBar = null;
     if (this.state.width <= 750) {
-      return (
-        <nav id='mobile-navigation-bar'>
-        {
-          this.selectNavBarIcons()
-        }
-        </nav>
-      )
+      if (this.props.isLoggedIn) {
+        navBar = document.getElementsByClassName("mobile-navigation-bar");
+        // navBar[0].id = "top-right-logged";
+        console.log('navBar', navBar)
+        return (
+          <div>
+            {
+              this.selectNavBarIcons()
+            }
+          </div>
+        )
+      }
     } else {
+      if (document.getElementById("top-right-logged")) {
+        navBar = document.getElementById("navigation-icons-logged");
+        navBar.remove();
+      }
       return (
         <div>
-          <div id='top-left-corner-icons'>
-            <a href="https://github.com/mbetances805/toDO"><img src={gitHub} className="navigation-icons" alt="github" /></a>
-            <a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} className="navigation-icons" alt="linkedIn" /></a>
-            <a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} className="navigation-icons" alt="screencast" /></a>
+          <div id='top-right-corner-icons'>
+            <a href="https://github.com/mbetances805/toDO"><img src={gitHub} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
+            <a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
+            <a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>
           </div>
           <div id="navigation-open-button">
-            <img src={navOpenIcon} alt="nav" onMouseEnter={this.hoverMenu} onClick={this.hoverMenu} />
+            <span><img src={navOpenIcon} alt="nav" onClick={this.hoverMenu} /></span>
           </div>
           <nav id='navigation-bar'>
-          {
-            this.selectNavBarIcons()
-          }
+            <span><img src={navCloseIcon} style={{paddingTop: '10px'}} onClick={this.hoverMenu} className="navigation-icons" alt="close"/></span>
+            {
+              this.selectNavBarIcons()
+            }
           </nav>
         </div>
       )
@@ -103,9 +117,11 @@ class Main extends Component {
     
     return (
       <div>
+        <nav className="mobile-navigation-bar">
           {
             this.selectNavBarStyle()
           }
+        </nav>
         {children}
       </div>
     )
