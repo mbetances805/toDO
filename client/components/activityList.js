@@ -71,7 +71,6 @@ class ActivityList extends Component {
           activities.allActivities && activities.allActivities
           .filter(activity => {
             const updatedDateUTC = this.convertToUTCTime(activity.updatedAt);
-            console.log('updatedDateUTC', activity.activityDescription, updatedDateUTC)
             return updatedDateUTC === comparisonDate || activity.activityStatus === 'active'
           })
           .map(activity => {

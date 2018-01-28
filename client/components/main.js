@@ -38,13 +38,17 @@ class Main extends Component {
   }
 
   hoverMenu = () => {
-    this.setState({show: !this.state.show});
-    if (this.state.show) {
-      document.getElementById('navigation-bar').style.visibility = 'hidden';
-      document.getElementById('navigation-open-button').style.visibility = 'visible';
+    if (this.state.width <= 750) {
+      return 
     } else {
-      document.getElementById('navigation-bar').style.visibility = 'visible';
-      document.getElementById('navigation-open-button').style.visibility = 'hidden';
+      this.setState({show: !this.state.show});
+      if (this.state.show) {
+        document.getElementById('navigation-bar').style.visibility = 'hidden';
+        document.getElementById('navigation-open-button').style.visibility = 'visible';
+      } else {
+        document.getElementById('navigation-bar').style.visibility = 'visible';
+        document.getElementById('navigation-open-button').style.visibility = 'hidden';
+      }
     }
   };
   
@@ -72,32 +76,17 @@ class Main extends Component {
   }
   
   selectNavBarStyle = () => {
-    let navBar = null;
     if (this.state.width <= 750) {
-      if (this.props.isLoggedIn) {
-        navBar = document.getElementsByClassName("mobile-navigation-bar");
-        // navBar[0].id = "top-right-logged";
-        console.log('navBar', navBar)
-        return (
-          <div>
-            {
-              this.selectNavBarIcons()
-            }
-          </div>
-        )
-      }
-    } else {
-      if (document.getElementById("top-right-logged")) {
-        navBar = document.getElementById("navigation-icons-logged");
-        navBar.remove();
-      }
       return (
         <div>
-          <div id='top-right-corner-icons'>
-            <a href="https://github.com/mbetances805/toDO"><img src={gitHub} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
-            <a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
-            <a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>
-          </div>
+          {
+            this.selectNavBarIcons()
+          }
+        </div>
+      )
+    } else {
+      return (
+        <div>
           <div id="navigation-open-button">
             <span><img src={navOpenIcon} alt="nav" onClick={this.hoverMenu} /></span>
           </div>
@@ -117,7 +106,12 @@ class Main extends Component {
     
     return (
       <div>
-        <nav className="mobile-navigation-bar">
+        <div id='top-right-corner-icons'>
+          <a href="https://github.com/mbetances805/toDO"><img src={gitHub} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
+          <a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
+          <a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>
+        </div>
+        <nav className="navigation-bar">
           {
             this.selectNavBarStyle()
           }
