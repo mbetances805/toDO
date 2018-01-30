@@ -9,7 +9,11 @@ router.get('/:id', (req, res, next) => {
   Activity.findAll({
     where: {
       userId: id,
-    }
+    },
+      order: [
+        ['activityStatus', 'ASC'],
+        ['createdAt', 'DESC']
+      ]
   })
     .then(activities => res.json(activities))
     .catch(next)
