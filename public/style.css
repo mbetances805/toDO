@@ -162,7 +162,13 @@ input::placeholder {
   color: black;
   margin: 5px auto;
   text-align: left;
-  
+}
+
+.activity-date {
+  float: right;
+  color: lightgrey;
+  font-size: 10px;
+  vertical-align: middle;
 }
 
 .activity-list:hover {
@@ -181,6 +187,11 @@ input::placeholder {
   outline: none;
   padding-right: 10px;
   vertical-align: middle;
+  z-index: 2;
+}
+
+.activity-check {
+  padding-right: 25px;
 }
 
 .wrapper {
@@ -311,7 +322,7 @@ input::placeholder {
   }
 }
 
-@media all and (orientation: portrait) {
+@media all and (max-width: 750px) and (orientation: portrait) {
   button {
     margin-left: 100%;
   }

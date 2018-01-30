@@ -78,9 +78,11 @@ class ActivityList extends Component {
               return (
                 <div className="activity-list" key={activity.id}>
                   <span className="activity-name-inactive">{activity.activityDescription}</span>
-                  <div className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
-                    <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></div>
-                  <div
+                  <span className="activity-date">completed </span><br />
+                  <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
+                  <span className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
+                    <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></span>
+                  <span
                     className="activity-delete" onClick={this.handleDelete(activity.id)}
                       onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
                     {
@@ -88,14 +90,16 @@ class ActivityList extends Component {
                         <img src={binHover} alt="delete" id={`delete-button${activity.id}`} />
                         : <img src={bin} alt="delete" id={`delete-button${activity.id}`} />
                     }
-                  </div>
+                  </span>
                 </div>
               )
             } else {
               return (
                 <div className="activity-list" key={activity.id}>
                 <span className="activity-name-active">{activity.activityDescription}</span>
-                <div
+                <span className="activity-date">created </span><br />
+                <span className="activity-date">{(this.convertToUTCTime(activity.activityDate)).slice(5).replace(/-/, '/')}</span>
+                <span
                   className="activity-check" onClick={this.handleCheck(activity)}
                     onMouseEnter={this.handleCheckHover(activity.id)} onMouseLeave={this.handleCheckHover(activity.id)}>
                   {
@@ -103,8 +107,8 @@ class ActivityList extends Component {
                       <img src={checkHover} alt="check" id={`check-button${activity.id}`} />
                       : <img src={check} alt="check" id={`check-button${activity.id}`}  />
                   }
-                </div>
-                <div
+                </span>
+                <span
                   className="activity-delete" onClick={this.handleDelete(activity.id)}
                     onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
                   {
@@ -112,7 +116,7 @@ class ActivityList extends Component {
                       <img src={binHover} alt="delete" id={`delete-button${activity.id}`} />
                       : <img src={bin} alt="delete" id={`delete-button${activity.id}`} />
                   }
-                </div>
+                </span>
                 </div>
               )
             }
