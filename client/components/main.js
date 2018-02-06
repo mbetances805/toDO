@@ -3,16 +3,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-import browser from '../../images/login.png'
-import navOpenIcon from '../../images/menu.png'
-import user from '../../images/profile.png'
-import home from '../../images/home_copy.png'
-import exit from '../../images/exit.png'
-import listing from '../../images/list.png'
-import gitHub from '../../images/GitHub-Mark-32px.png'
-import linkedIn from '../../images/In-2C-34px-R.png'
-import screenCast from '../../images/youtube-symbol.png'
-import navCloseIcon from '../../images/left-arrow.png'
 
 class Main extends Component {
   constructor() {
@@ -27,19 +17,19 @@ class Main extends Component {
     this.selectNavBarIcons = this.selectNavBarIcons.bind(this);
     this.selectNavBarStyle = this.selectNavBarStyle.bind(this);
   }
-  
+
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
   }
-  
+
   componentWillUnmount() {
     window.removeEventLister('resize', this.updateWindowDimensions)
   }
 
   hoverMenu = () => {
     if (this.state.width <= 750) {
-      return 
+      this.setState({show: !this.state.show})
     } else {
       this.setState({show: !this.state.show});
       if (this.state.show) {
@@ -51,30 +41,30 @@ class Main extends Component {
       }
     }
   };
-  
+
   updateWindowDimensions = () => {
     this.setState({width: window.innerWidth, height: window.innerHeight})
   };
-  
+
   selectNavBarIcons = () => {
     if (this.props.isLoggedIn) {
       return (
         <div>
-         <Link to="/list"><img src={listing} className="navigation-icons-logged" alt="Home" /></Link>
-         <a href="#" onClick={this.props.handleClick}><img src={exit} className="navigation-icons-logged" alt="Logout" /></a>
+         <Link to="/list"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/151/151917.svg'} className="navigation-icons-logged" alt="Home" /></Link>
+         <a href="#" onClick={this.props.handleClick}><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/157/157938.svg'} className="navigation-icons-logged" alt="Logout" /></a>
         </div>
       )
      } else {
        return (
         <div>
-          <Link to="/welcome"><img src={home} onClick={this.hoverMenu} className="navigation-icons" alt="Home" /></Link>
-          <Link to="/login"><img src={browser} onClick={this.hoverMenu} className="navigation-icons" alt="Login" /></Link>
-          <Link to="/signup"><img src={user} onClick={this.hoverMenu} className="navigation-icons" alt="Sign Up" /></Link>
+          <Link to="/welcome"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/263/263115.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="Home" /></Link>
+          <Link to="/login"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/54/54815.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="Login" /></Link>
+          <Link to="/signup"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/134/134105.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="Sign Up" /></Link>
         </div>
       )
      }
   }
-  
+
   selectNavBarStyle = () => {
     if (this.state.width <= 750) {
       return (
@@ -88,10 +78,10 @@ class Main extends Component {
       return (
         <div>
           <div id="navigation-open-button">
-            <span><img src={navOpenIcon} onClick={this.hoverMenu} alt="nav" /></span>
+            <span><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/60/60510.svg'} onClick={this.hoverMenu} alt="nav" /></span>
           </div>
           <nav id='navigation-bar'>
-            <span><img src={navCloseIcon} style={{paddingTop: '10px'}} onClick={this.hoverMenu} className="navigation-icons" alt="close"/></span>
+            <span><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/109/109618.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="close" /></span>
             {
               this.selectNavBarIcons()
             }
@@ -103,13 +93,13 @@ class Main extends Component {
 
   render() {
     const {children, handleClick, isLoggedIn} = this.props;
-    
+
     return (
       <div>
         <div id='top-right-corner-icons'>
-          <a href="https://github.com/mbetances805/toDO"><img src={gitHub} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
-          <a href="https://www.linkedin.com/in/mariabetances/"><img src={linkedIn} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
-          <a href="https://youtu.be/OXuQUxuyuFo"><img src={screenCast} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>
+          <a href="https://github.com/mbetances805/toDO"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/25/25231.svg'} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
+          <a href="https://www.linkedin.com/in/mariabetances/"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/25/25320.svg'} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
+          <a href="https://youtu.be/OXuQUxuyuFo"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/152/152810.svg'} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>
         </div>
         <nav className="navigation-bar">
           {
