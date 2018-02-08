@@ -17,16 +17,16 @@ class ActivityList extends Component {
       buttonCheckHover: '',
       buttonBinHover: ''
     }
-  }
-
-  componentDidMount() {
-    const { userId } = this.props;
-    this.props.getActivities(userId);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleCheckHover = this.handleCheckHover.bind(this);
     this.handleBinHover = this.handleBinHover.bind(this);
     this.convertToUTCTime = this.convertToUTCTime.bind(this);
+  }
+
+  componentDidMount() {
+    const { userId } = this.props;
+    this.props.getActivities(userId);
   }
 
   handleDelete = id => evt => {
