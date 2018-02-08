@@ -194,6 +194,11 @@ input::placeholder {
   z-index: 2;
 }
 
+.activity-delete: hover {
+  transform: scale(1.5, 1.5);
+  opacity: 1;
+} 
+
 .activity-check {
   padding-right: 25px;
 }

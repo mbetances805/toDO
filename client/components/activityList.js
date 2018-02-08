@@ -84,11 +84,7 @@ class ActivityList extends Component {
                   <span
                     className="activity-delete" onClick={this.handleDelete(activity.id)}
                       onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
-                    {
-                      Number(this.state.buttonBinHover) === activity.id ?
-                        <img src={binHover} alt="delete" id={`delete-button${activity.id}`} />
-                        : <img src={bin} alt="delete" id={`delete-button${activity.id}`} />
-                    }
+                      <img className="activity-delete" width="15" height="15" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"} alt="delete" id={`delete-button${activity.id}`} />
                   </span>
                 </div>
               )
@@ -102,18 +98,14 @@ class ActivityList extends Component {
                     onMouseEnter={this.handleCheckHover(activity.id)} onMouseLeave={this.handleCheckHover(activity.id)}>
                   {
                     Number(this.state.buttonCheckHover) === activity.id ?
-                      <img src={checkHover} alt="check" id={`check-button${activity.id}`} />
-                      : <img src={check} alt="check" id={`check-button${activity.id}`}  />
+                      <img width="20" height="20" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} alt="check" id={`check-button${activity.id}`} />
+                      : <img width="15" height="15" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} alt="check" id={`check-button${activity.id}`}  />
                   }
                 </span>
                 <span
                   className="activity-delete" onClick={this.handleDelete(activity.id)}
                     onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
-                  {
-                    Number(this.state.buttonBinHover) === activity.id ?
-                      <img src={binHover} alt="delete" id={`delete-button${activity.id}`} />
-                      : <img src={bin} alt="delete" id={`delete-button${activity.id}`} />
-                  }
+                    <img className="activity-delete"  width="15" height="15" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"} alt="delete" id={`delete-button${activity.id}`} />
                 </span>
                 </div>
               )
