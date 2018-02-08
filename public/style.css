@@ -167,6 +167,14 @@ input::placeholder {
   overflow-wrap: break-word;
 }
 
+.activity-date {
+  float: right;
+  color: lightgrey;
+  font-size: 10px;
+  vertical-align: middle;
+  position: relative;
+}
+
 .activity-list:hover {
   border-color: darkviolet;
 }

@@ -78,7 +78,6 @@ class ActivityList extends Component {
               return (
                 <div className="activity-list" key={activity.id}>
                   <span className="activity-name-inactive">{activity.activityDescription}</span>
-                  <span className="activity-date">completed </span><br />
                   <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
                   <span className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
                     <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></span>
@@ -97,7 +96,6 @@ class ActivityList extends Component {
               return (
                 <div className="activity-list" key={activity.id}>
                 <span className="activity-name-active">{activity.activityDescription}</span>
-                <span className="activity-date">created </span><br />
                 <span className="activity-date">{(this.convertToUTCTime(activity.activityDate)).slice(5).replace(/-/, '/')}</span>
                 <span
                   className="activity-check" onClick={this.handleCheck(activity)}
