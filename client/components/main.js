@@ -29,15 +29,15 @@ class Main extends Component {
 
   hoverMenu = () => {
     if (this.state.width <= 750) {
-      this.setState({show: !this.state.show})
+      this.setState({show: true})
     } else {
       this.setState({show: !this.state.show});
       if (this.state.show) {
-        document.getElementById('navigation-bar').style.visibility = 'hidden';
-        document.getElementById('navigation-open-button').style.visibility = 'visible';
+        document.getElementById("navigation-bar").style.visibility = "hidden";
+        document.getElementById("navigation-open-button").style.visibility = "visible";
       } else {
-        document.getElementById('navigation-bar').style.visibility = 'visible';
-        document.getElementById('navigation-open-button').style.visibility = 'hidden';
+        document.getElementById("navigation-bar").style.visibility = "visible";
+        document.getElementById("navigation-open-button").style.visibility = "hidden";
       }
     }
   };
@@ -68,11 +68,11 @@ class Main extends Component {
   selectNavBarStyle = () => {
     if (this.state.width <= 750) {
       return (
-        <div>
+        <nav>
           {
             this.selectNavBarIcons()
           }
-        </div>
+        </nav>
       )
     } else {
       return (
@@ -80,7 +80,7 @@ class Main extends Component {
           <div id="navigation-open-button">
             <span><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/60/60510.svg'} onClick={this.hoverMenu} alt="nav" /></span>
           </div>
-          <nav id='navigation-bar'>
+          <nav id="navigation-bar">
             <span><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/109/109618.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="close" /></span>
             {
               this.selectNavBarIcons()
@@ -96,7 +96,7 @@ class Main extends Component {
 
     return (
       <div>
-        <div id='top-right-corner-icons'>
+        <div id="top-right-corner-icons">
           <a href="https://github.com/mbetances805/toDO"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/25/25231.svg'} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
           <a href="https://www.linkedin.com/in/mariabetances/"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/25/25320.svg'} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
           <a href="https://youtu.be/OXuQUxuyuFo"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/152/152810.svg'} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>

@@ -1,6 +1,7 @@
 body {
   background: white;
   font-family: 'Roboto', sans-serif;
+  min-width: 100%;
 }
 
 a {
@@ -33,7 +34,6 @@ form div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: left 1s ease;
   top: 0px;
 }
 
@@ -164,7 +164,7 @@ input::placeholder {
   color: black;
   margin: 5px auto;
   text-align: left;
-
+  overflow-wrap: break-word;
 }
 
 .activity-list:hover {
@@ -272,15 +272,10 @@ input::placeholder {
     flex-direction: row;
     flex-wrap: wrap;
     right: 0%;
-    /* align-self: center; */
     border-radius: 20px;
     border-top-right-radius: 20px;
     position: fixed;
   }
-/*
-  div {
-    visibility: visible !important;
-  } */
 
   #top-right-corner-icons {
     display: flex;
@@ -315,11 +310,12 @@ input::placeholder {
   }
 }
 
-@media all and (orientation: portrait) {
-  .wrapper {
-    text-align: left;
+@media only screen and (max-width: 640px) {
+  .container {
+    width: 640px;
   }
-  .login-title {
-    text-align: left;
+  
+  #footer {
+    width: 640px;
   }
 }
