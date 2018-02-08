@@ -11,18 +11,6 @@ import PropTypes from 'prop-types'
 
 
 class ActivityList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      buttonCheckHover: '',
-      buttonBinHover: ''
-    }
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
-    this.handleCheckHover = this.handleCheckHover.bind(this);
-    this.handleBinHover = this.handleBinHover.bind(this);
-    this.convertToUTCTime = this.convertToUTCTime.bind(this);
-  }
 
   componentDidMount() {
     const { userId } = this.props;
@@ -35,22 +23,6 @@ class ActivityList extends Component {
 
   handleCheck = activity => evt => {
     this.props.editActivity({...activity, activityStatus: 'inactive', updatedAt: Date.now()})
-  };
-
-  handleCheckHover = element => evt => {
-    if (Number(this.state.buttonCheckHover === element)) {
-      this.setState({buttonCheckHover: ''})
-    } else {
-      this.setState({buttonCheckHover: element})
-    }
-  };
-
-  handleBinHover = element => evt => {
-    if (Number(this.state.buttonBinHover === element)) {
-      this.setState({buttonBinHover: ''})
-    } else {
-      this.setState({buttonBinHover: element})
-    }
   };
   
   convertToUTCTime = date => {
@@ -79,13 +51,23 @@ class ActivityList extends Component {
                 <div className="activity-list" key={activity.id}>
                   <span className="activity-name-inactive">{activity.activityDescription}</span>
                   <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
-                  <span className="activity-check" disabled={true} onClick={this.handleCheck(activity)}>
-                    <img src={checkDisabled} alt="check" id={`check-button${activity.id}`} /></span>
-                  <span
-                    className="activity-delete" onClick={this.handleDelete(activity.id)}
-                      onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
-                      <img className="activity-delete" width="15" height="15" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"} alt="delete" id={`delete-button${activity.id}`} />
-                  </span>
+                  <img
+                    className="activity-disabled-check"
+                    src={checkDisabled}
+                    alt="check"
+                    id={`check-button${activity.id}`}
+                    onClick={this.handleCheck(activity)}
+                    disabled={true} 
+                  />
+                  <img
+                    className="activity-delete"
+                    width="15"
+                    height="15"
+                    src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
+                    alt="delete"
+                    id={`delete-button${activity.id}`}
+                    onClick={this.handleDelete(activity.id)}
+                  />
                 </div>
               )
             } else {
@@ -93,20 +75,24 @@ class ActivityList extends Component {
                 <div className="activity-list" key={activity.id}>
                 <span className="activity-name-active">{activity.activityDescription}</span>
                 <span className="activity-date">{(this.convertToUTCTime(activity.activityDate)).slice(5).replace(/-/, '/')}</span>
-                <span
-                  className="activity-check" onClick={this.handleCheck(activity)}
-                    onMouseEnter={this.handleCheckHover(activity.id)} onMouseLeave={this.handleCheckHover(activity.id)}>
-                  {
-                    Number(this.state.buttonCheckHover) === activity.id ?
-                      <img width="20" height="20" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} alt="check" id={`check-button${activity.id}`} />
-                      : <img width="15" height="15" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} alt="check" id={`check-button${activity.id}`}  />
-                  }
-                </span>
-                <span
-                  className="activity-delete" onClick={this.handleDelete(activity.id)}
-                    onMouseEnter={this.handleBinHover(activity.id)} onMouseLeave={this.handleBinHover(activity.id)}>
-                    <img className="activity-delete"  width="15" height="15" src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"} alt="delete" id={`delete-button${activity.id}`} />
-                </span>
+                <img
+                  className="activity-check"
+                  width="15"
+                  height="15" 
+                  src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} 
+                  alt="check"
+                  id={`check-button${activity.id}`}
+                  onClick={this.handleCheck(activity)}
+                />
+                <img
+                  className="activity-delete"
+                  width="15"
+                  height="15"
+                  src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
+                  alt="delete"
+                  id={`delete-button${activity.id}`}
+                  onClick={this.handleDelete(activity.id)}
+                />
                 </div>
               )
             }

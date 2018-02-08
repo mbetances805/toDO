@@ -185,21 +185,22 @@ input::placeholder {
   color: lightgrey;
 }
 
-.activity-check, .activity-delete {
+.activity-check, .activity-delete, .activity-disabled-check {
   float: right;
   border: none;
   outline: none;
   padding-right: 10px;
   vertical-align: middle;
   z-index: 2;
+  transition: all .2s ease-in-out;
 }
 
-.activity-delete: hover {
-  transform: scale(1.5, 1.5);
+.activity-check:hover, .activity-delete:hover {
+  transform: scale(1.2);
   opacity: 1;
 } 
 
-.activity-check {
+.activity-check, .activity-disabled-check {
   padding-right: 25px;
 }
 
