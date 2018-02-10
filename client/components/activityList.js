@@ -49,50 +49,58 @@ class ActivityList extends Component {
             if (activity.activityStatus === 'inactive') {
               return (
                 <div className="activity-list" key={activity.id}>
-                  <span className="activity-name-inactive">{activity.activityDescription}</span>
-                  <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
-                  <img
-                    className="activity-disabled-check"
-                    src={checkDisabled}
-                    alt="check"
-                    id={`check-button${activity.id}`}
-                    onClick={this.handleCheck(activity)}
-                    disabled={true} 
-                  />
-                  <img
-                    className="activity-delete"
-                    width="15"
-                    height="15"
-                    src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
-                    alt="delete"
-                    id={`delete-button${activity.id}`}
-                    onClick={this.handleDelete(activity.id)}
-                  />
+                  <div className="activity-container">
+                    <span className="activity-name-inactive">{activity.activityDescription}</span>
+                    <span className="activity-button-container">
+                      <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
+                      <img
+                        className="activity-disabled-check"
+                        src={checkDisabled}
+                        alt="check"
+                        id={`check-button${activity.id}`}
+                        onClick={this.handleCheck(activity)}
+                        disabled={true} 
+                      />
+                      <img
+                        className="activity-delete"
+                        width="15"
+                        height="15"
+                        src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
+                        alt="delete"
+                        id={`delete-button${activity.id}`}
+                        onClick={this.handleDelete(activity.id)}
+                      />
+                    </span>
+                  </div>
                 </div>
               )
             } else {
               return (
                 <div className="activity-list" key={activity.id}>
-                <span className="activity-name-active">{activity.activityDescription}</span>
-                <span className="activity-date">{(this.convertToUTCTime(activity.activityDate)).slice(5).replace(/-/, '/')}</span>
-                <img
-                  className="activity-check"
-                  width="15"
-                  height="15" 
-                  src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} 
-                  alt="check"
-                  id={`check-button${activity.id}`}
-                  onClick={this.handleCheck(activity)}
-                />
-                <img
-                  className="activity-delete"
-                  width="15"
-                  height="15"
-                  src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
-                  alt="delete"
-                  id={`delete-button${activity.id}`}
-                  onClick={this.handleDelete(activity.id)}
-                />
+                  <div className="activity-container">
+                    <span className="activity-name-active">{activity.activityDescription}</span>
+                    <span className="activity-button-container">
+                      <span className="activity-date">{(this.convertToUTCTime(activity.activityDate)).slice(5).replace(/-/, '/')}</span>
+                      <img
+                        className="activity-check"
+                        width="15"
+                        height="15" 
+                        src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} 
+                        alt="check"
+                        id={`check-button${activity.id}`}
+                        onClick={this.handleCheck(activity)}
+                      />
+                      <img
+                        className="activity-delete"
+                        width="15"
+                        height="15"
+                        src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
+                        alt="delete"
+                        id={`delete-button${activity.id}`}
+                        onClick={this.handleDelete(activity.id)}
+                      />
+                    </span>
+                  </div>
                 </div>
               )
             }
