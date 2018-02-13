@@ -209,14 +209,19 @@ input::placeholder {
 .activity-check, .activity-delete, .activity-disabled-check {
   transition: all .2s ease-in-out;
   grid-row: 2;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
 }
 
 .activity-check:hover, .activity-delete:hover {
   transform: scale(1.2);
   opacity: 1;
-} 
+}
+
+.activity-disabled-check {
+  opacity: 0.2;
+}
 
 .wrapper {
   position: relative;
@@ -347,7 +352,7 @@ input::placeholder {
   .container {
     width: 640px;
   }
-  
+
   #footer {
     width: 640px;
   }

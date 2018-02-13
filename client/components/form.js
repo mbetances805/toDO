@@ -36,7 +36,7 @@ class Form extends Component {
     }
   }
 
-  handleChange = (evt) => {
+  handleChange = evt => {
     this.setState({text: evt.target.value});
   };
 

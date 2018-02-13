@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Activity } = require('../db/models');
-const { Op } = require('sequelize');
 
 module.exports = router;
 

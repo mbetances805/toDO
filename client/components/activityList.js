@@ -2,11 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { deleteActivity, fetchActivities, updateActivity } from '../store/activity'
-import bin from '../../images/rubbish-bin.png'
-import check from '../../images/checked.png'
-import binHover from '../../images/rubbish-bin-hover.png'
-import checkHover from '../../images/checked-hover.png'
-import checkDisabled from '../../images/checked-disabled.png'
 import PropTypes from 'prop-types'
 
 
@@ -24,7 +19,7 @@ class ActivityList extends Component {
   handleCheck = activity => evt => {
     this.props.editActivity({...activity, activityStatus: 'inactive', updatedAt: Date.now()})
   };
-  
+
   convertToUTCTime = date => {
     const utcTime = new Date(date);
     return utcTime.getFullYear() + '-' +
@@ -32,11 +27,43 @@ class ActivityList extends Component {
       (('0' + utcTime.getDate()).slice(-2)).toString();
   };
 
-
   render() {
     const { activities }  = this.props;
     const comparisonDate = this.convertToUTCTime(Date.now());
-    
+    let activityCheckButton = '';
+    let activityName = '';
+    let checkImage = '';
+    let binImage = '';
+    let link = '';
+    let endOfText = '';
+
+    const urlify = (text, linkStart, linkEnd)  => {
+      if (linkStart > -1) {
+        link = text.substring(linkStart, linkEnd + 4);
+      }
+    };
+
+    const removeURL = text => {
+      let linkStart = text.indexOf('http');
+      let linkEnd = text.indexOf('.com');
+      let updatedText = '';
+
+      if (linkStart > -1) {
+        updatedText = text.substring(0, linkStart);
+        urlify(text, linkStart, linkEnd)
+
+        if (text.length > linkEnd + 5) {
+          endOfText = text.substring(linkEnd + 5)
+        }
+
+        return updatedText
+      } else {
+        link = '';
+        endOfText = '';
+        return text
+      }
+    };
+
     return (
       <div>
         {
@@ -47,65 +74,47 @@ class ActivityList extends Component {
           })
           .map(activity => {
             if (activity.activityStatus === 'inactive') {
-              return (
-                <div className="activity-list" key={activity.id}>
-                  <div className="activity-container">
-                    <span className="activity-name-inactive">{activity.activityDescription}</span>
-                    <span className="activity-button-container">
-                      <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
-                      <img
-                        className="activity-disabled-check"
-                        src={checkDisabled}
-                        alt="check"
-                        id={`check-button${activity.id}`}
-                        onClick={this.handleCheck(activity)}
-                        disabled={true} 
-                      />
-                      <img
-                        className="activity-delete"
-                        width="15"
-                        height="15"
-                        src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
-                        alt="delete"
-                        id={`delete-button${activity.id}`}
-                        onClick={this.handleDelete(activity.id)}
-                      />
-                    </span>
-                  </div>
-                </div>
-              )
+              activityCheckButton = 'activity-disabled-check';
+              activityName = 'activity-name-inactive';
+              checkImage = 'https://image.flaticon.com/icons/svg/149/149691.svg';
+              binImage = 'https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg';
             } else {
-              return (
-                <div className="activity-list" key={activity.id}>
-                  <div className="activity-container">
-                    <span className="activity-name-active">{activity.activityDescription}</span>
-                    <span className="activity-button-container">
-                      <span className="activity-date">{(this.convertToUTCTime(activity.activityDate)).slice(5).replace(/-/, '/')}</span>
-                      <img
-                        className="activity-check"
-                        width="15"
-                        height="15" 
-                        src={"https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg"} 
-                        alt="check"
-                        id={`check-button${activity.id}`}
-                        onClick={this.handleCheck(activity)}
-                      />
-                      <img
-                        className="activity-delete"
-                        width="15"
-                        height="15"
-                        src={"https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg"}
-                        alt="delete"
-                        id={`delete-button${activity.id}`}
-                        onClick={this.handleDelete(activity.id)}
-                      />
-                    </span>
-                  </div>
-                </div>
-              )
+              activityCheckButton = 'activity-check';
+              activityName = 'activity-name-active';
+              checkImage = 'https://img-fi-n2.akamaized.net/icons/svg/149/149148.svg';
+              binImage = 'https://img-fi-n2.akamaized.net/icons/svg/149/149343.svg';
             }
-        })
-      }
+
+            return (
+              <div className="activity-list" key={activity.id}>
+                <div className="activity-container">
+                  <span id={`activity-list-${activity.id}`} className={activityName}>{removeURL(activity.activityDescription)}
+                    <a href={link}>{link}</a>
+                    <span> {endOfText}</span>
+                  </span>
+                  <span className="activity-button-container">
+                    <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
+                    <img
+                      className={activityCheckButton}
+                      src={checkImage}
+                      alt="check"
+                      id={`check-button${activity.id}`}
+                      onClick={this.handleCheck(activity)}
+                      disabled={true}
+                    />
+                    <img
+                      className="activity-delete"
+                      src={binImage}
+                      alt="delete"
+                      id={`delete-button${activity.id}`}
+                      onClick={this.handleDelete(activity.id)}
+                    />
+                  </span>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
