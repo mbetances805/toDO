@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome,
-  Form, OpenActivities, Welcome} from './components'
+import {Main, Login, Signup, OpenActivities, Welcome} from './components'
 import {me} from './store'
 
 /**
@@ -34,8 +33,8 @@ class Routes extends Component {
                   <Route path="/" component={OpenActivities} />
                 </Switch>
             }
-            {/* Displays our Welcome component as a fallback */}
-            <Route component={Welcome} />
+            {/* Displays our Login component as a fallback */}
+            <Route component={Login} />
           </Switch>
         </Main>
       </Router>

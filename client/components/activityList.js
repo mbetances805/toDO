@@ -40,30 +40,28 @@ class ActivityList extends Component {
     const urlify = (text, linkStart, space)  => {
       link = text.substring(linkStart, space);
     };
-// temporary solution for hyperlink - to be updated - not DRY
+// temporary solution for hyperlink - to be updated
     const removeURL = text => {
-      let linkStart = text.indexOf('http');
-      let linkEnd = text.indexOf('.com');
-      let textSub = text.substring(linkEnd)
-      let space = textSub.indexOf(' ');
+      let linkEnd = 0
       let updatedText = '';
-      
+      let linkStart = text.indexOf('http');
+      let urlRegEx = /(\b(((https?|ftp|file|):\/\/)|www[.])[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig
+      link = text.match(urlRegEx);
+
+      if (link) {
+        linkEnd = linkStart + link[0].length;
+      }
+
+      let textSub = text.substring(linkEnd);
+
       if (linkStart > -1) {
         if (linkStart === 0) {
           updatedText = text
           urlify(text, linkStart, text.length)
         } else {
           updatedText = text.substring(0, linkStart);
-          if (space > -1) {
-            space = space + linkEnd
-          } else {
-            space = text.length;
-          }
-          urlify(text, linkStart, space)
-          
-          if ((text.length > space || text.length > linkEnd + 4) && space > -1) {
-            endOfText = text.substring(space)
-          }
+          urlify(text, linkStart, linkEnd)
+            endOfText = textSub;
          return updatedText
         }
       } else {
