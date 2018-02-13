@@ -45,17 +45,19 @@ class ActivityList extends Component {
       let linkEnd = 0
       let updatedText = '';
       let linkStart = text.indexOf('http');
-      let urlRegEx = /(\b(((https?|ftp|file|):\/\/)|www[.])[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig
+      let urlRegEx = /(\b(((https?|ftp|file|):\/\/)|www[.])[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
+      let textSub = '';
+
       link = text.match(urlRegEx);
 
       if (link) {
         linkEnd = linkStart + link[0].length;
       }
 
-      let textSub = text.substring(linkEnd);
+      textSub = text.substring(linkEnd);
 
       if (linkStart > -1) {
-        if (linkStart === 0) {
+        if (linkStart === 0 && link[0].length === text.length) {
           updatedText = text
           urlify(text, linkStart, text.length)
         } else {

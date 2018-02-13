@@ -47,7 +47,6 @@ export const updateActivity = (activity) =>
     return axios.put(`/api/activities/${activity.id}`, activity)
       .then(() => {
         dispatch(editActivity(activity))
-        console.log('api activity', activity)
       })
       .catch(err => console.log(err))};
 
