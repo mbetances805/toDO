@@ -37,26 +37,35 @@ class ActivityList extends Component {
     let link = '';
     let endOfText = '';
 
-    const urlify = (text, linkStart, linkEnd)  => {
-      if (linkStart > -1) {
-        link = text.substring(linkStart, linkEnd + 4);
-      }
+    const urlify = (text, linkStart, space)  => {
+      link = text.substring(linkStart, space);
     };
-
+// temporary solution for hyperlink - to be updated - not DRY
     const removeURL = text => {
       let linkStart = text.indexOf('http');
       let linkEnd = text.indexOf('.com');
+      let textSub = text.substring(linkEnd)
+      let space = textSub.indexOf(' ');
       let updatedText = '';
-
+      
       if (linkStart > -1) {
-        updatedText = text.substring(0, linkStart);
-        urlify(text, linkStart, linkEnd)
-
-        if (text.length > linkEnd + 5) {
-          endOfText = text.substring(linkEnd + 5)
+        if (linkStart === 0) {
+          updatedText = text
+          urlify(text, linkStart, text.length)
+        } else {
+          updatedText = text.substring(0, linkStart);
+          if (space > -1) {
+            space = space + linkEnd
+          } else {
+            space = text.length;
+          }
+          urlify(text, linkStart, space)
+          
+          if ((text.length > space || text.length > linkEnd + 4) && space > -1) {
+            endOfText = text.substring(space)
+          }
+         return updatedText
         }
-
-        return updatedText
       } else {
         link = '';
         endOfText = '';
