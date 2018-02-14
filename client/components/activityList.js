@@ -69,6 +69,8 @@ class ActivityList extends Component {
       } else {
         link = '';
         endOfText = '';
+        textSub = '';
+        updatedText = '';
         return text
       }
     };
