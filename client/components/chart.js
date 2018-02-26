@@ -1,0 +1,41 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
+import Axes from './axes'
+
+
+class Chart extends Component {
+  render() {
+    let xScale = this.props.xScale,
+        yScale = this.props.yScale,
+        svgDimensions = {height: this.props.height, width: this.props.width},
+        margins = {top: 20, right: 10, bottom: 10, left: 10};
+
+    return (
+      <div className="completed-line-graph">
+       <h3>{this.props.title}</h3>
+          <svg width={this.props.width} height={this.props.height}>
+            <Axes
+              scales={{ xScale, yScale }}
+              margins={margins}
+              svgDimensions={svgDimensions}
+            />
+            {this.props.children}
+          </svg>
+      </div>
+    )
+  }
+}
+
+const mapState = null;
+const mapDispatch = null;
+
+export default connect(mapState, mapDispatch)(Chart)
+
+Chart.propTypes = {
+  title: PropTypes.string,
+}
+
+Chart.defaultProps = {
+  title: 'Count of Completed Activities'
+}

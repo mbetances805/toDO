@@ -63,7 +63,7 @@ class ActivityList extends Component {
         } else {
           updatedText = text.substring(0, linkStart);
           urlify(text, linkStart, linkEnd)
-            endOfText = textSub;
+          endOfText = textSub;
          return updatedText
         }
       } else {
@@ -104,7 +104,8 @@ class ActivityList extends Component {
                     <span> {endOfText}</span>
                   </span>
                   <span className="activity-button-container">
-                    <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}</span>
+                    <span className="activity-date">{(this.convertToUTCTime(activity.updatedAt)).slice(5).replace(/-/, '/')}
+                    </span>
                     <img
                       className={activityCheckButton}
                       src={checkImage}

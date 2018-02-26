@@ -21,6 +21,12 @@ button {
   margin: 0 auto;
 }
 
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
 /* FORMS */
 
 form div {
@@ -297,6 +303,11 @@ input::placeholder {
   width: 100%;
   margin: 0 auto;
   font-size: 1.5vmin;
+}
+
+/* Line Graph */
+.completed-line-graph {
+  text-align: center;
 }
 
 @media only screen and (max-width: 750px) {

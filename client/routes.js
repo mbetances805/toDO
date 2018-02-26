@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, OpenActivities, Welcome} from './components'
+import {Main, Login, Signup, OpenActivities,
+  Welcome, ActivityLineGraph, Summary} from './components'
 import {me} from './store'
 
 /**
@@ -30,6 +31,7 @@ class Routes extends Component {
                 <Switch>
                   {/* Routes placed here are only available after logging in */}
                   <Route path="/list" component={OpenActivities} />
+                  <Route path="/completed" component={Summary} />
                   <Route path="/" component={OpenActivities} />
                 </Switch>
             }
