@@ -8,8 +8,7 @@ class Chart extends Component {
   render() {
     let xScale = this.props.xScale,
         yScale = this.props.yScale,
-        svgDimensions = {height: this.props.height, width: this.props.width},
-        margins = {top: 20, right: 10, bottom: 10, left: 10};
+        svgDimensions = {height: this.props.height, width: this.props.width};
 
     return (
       <div className="completed-line-graph">
@@ -17,7 +16,7 @@ class Chart extends Component {
           <svg width={this.props.width} height={this.props.height}>
             <Axes
               scales={{ xScale, yScale }}
-              margins={margins}
+              margins={this.props.margins}
               svgDimensions={svgDimensions}
             />
             {this.props.children}

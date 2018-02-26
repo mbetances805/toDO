@@ -17,8 +17,8 @@ class Axis extends Component{
     const axis = d3Axis[axisType]()
           .scale(this.props.scale)
           .tickSize(this.props.tickSize)
-          .tickPadding([12])
-          .ticks(4)
+          .tickPadding(5)
+          .ticks(10)
 
     select(this.axisElement).call(axis)
   }

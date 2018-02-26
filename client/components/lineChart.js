@@ -18,6 +18,8 @@ class LineChart extends Component {
       return descending(a.date, b.date)
     });
 
+    let margins = {top: 5, right: 15, bottom: 50, left: 20}
+
     // let max = _.chain(data.series1, data.series2, data.series3)
     //     .zip()
     //     .map(values => {
@@ -29,15 +31,15 @@ class LineChart extends Component {
     // update to reflect domain from data
     let xScale = scaleTime()
         .domain([new Date(2018, 0, 20), new Date(2018, 2, 1)])
-        .range([0, this.props.width]);
+        .range([0, this.props.width - margins.left - margins.right]);
 
     // update to reflect domain from data
     let yScale = scaleLinear()
         .domain([0, 10])
-        .range([this.props.height, 0]);
+        .range([this.props.height - margins.top - margins.bottom, 0]);
 
     return (
-      <Chart width={this.props.width} height={this.props.height} xScale={xScale} yScale={yScale}>
+      <Chart width={this.props.width} height={this.props.height} xScale={xScale} yScale={yScale} margins={margins}>
         <CompletedDataSeries data={sortedData} size={size} xScale={xScale} yScale={yScale} color="cornflowerblue" />
       </Chart>
     )
@@ -55,6 +57,6 @@ LineChart.propTypes = {
 };
 
 LineChart.defaultProps = {
-  width: 400,
+  width: 300,
   height: 300
 };
