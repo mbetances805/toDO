@@ -310,6 +310,15 @@ input::placeholder {
   text-align: center;
 }
 
+.focus {
+  font-size: 12px;
+}
+
+.focus circle {
+  fill: #5e8dc9;
+}
+
+/* Media Options */
 @media only screen and (max-width: 750px) {
   .navigation-bar {
     display: inline-flex;

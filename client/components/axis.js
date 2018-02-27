@@ -13,12 +13,12 @@ class Axis extends Component{
   }
 
   renderAxis = () => {
-    const axisType = `axis${this.props.orientation}`
+    const axisType = `axis${this.props.orient}`
     const axis = d3Axis[axisType]()
           .scale(this.props.scale)
           .tickSize(this.props.tickSize)
-          .tickPadding(5)
-          .ticks(10)
+          .tickPadding(2)
+          .ticks(5)
 
     select(this.axisElement).call(axis)
   }
@@ -26,7 +26,7 @@ class Axis extends Component{
   render() {
     return (
       <g
-        className={`Axis-Axis-${this.props.orientation}`}
+        className={`Axis-Axis-${this.props.orient}`}
         ref={(element) => { this.axisElement = element }}
         transform={this.props.translate}
       />

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import Axes from './axes'
 
-
 class Chart extends Component {
   render() {
     let xScale = this.props.xScale,
@@ -12,7 +11,7 @@ class Chart extends Component {
 
     return (
       <div className="completed-line-graph">
-       <h3>{this.props.title}</h3>
+       <h4>{this.props.title}</h4>
           <svg width={this.props.width} height={this.props.height}>
             <Axes
               scales={{ xScale, yScale }}

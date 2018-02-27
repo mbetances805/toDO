@@ -6,6 +6,8 @@ import Chart from './chart'
 import CompletedDataSeries from './completedDataSeries'
 import { descending } from 'd3-array'
 // import _ from 'underscore'
+import Tooltip from './tooltip'
+
 
 class LineChart extends Component {
   render() {
@@ -18,7 +20,7 @@ class LineChart extends Component {
       return descending(a.date, b.date)
     });
 
-    let margins = {top: 5, right: 15, bottom: 50, left: 20}
+    let margins = {top: 2, right: 15, bottom: 20, left: 20};
 
     // let max = _.chain(data.series1, data.series2, data.series3)
     //     .zip()
@@ -31,17 +33,32 @@ class LineChart extends Component {
     // update to reflect domain from data
     let xScale = scaleTime()
         .domain([new Date(2018, 0, 20), new Date(2018, 2, 1)])
-        .range([0, this.props.width - margins.left - margins.right]);
+        .range([margins.left, this.props.width - margins.left - margins.right]);
 
     // update to reflect domain from data
     let yScale = scaleLinear()
         .domain([0, 10])
-        .range([this.props.height - margins.top - margins.bottom, 0]);
+        .range([this.props.height - margins.top - margins.bottom, margins.bottom]);
 
     return (
-      <Chart width={this.props.width} height={this.props.height} xScale={xScale} yScale={yScale} margins={margins}>
-        <CompletedDataSeries data={sortedData} size={size} xScale={xScale} yScale={yScale} color="cornflowerblue" />
-      </Chart>
+      <div className="chart-container">
+        <Chart
+          width={this.props.width}
+          height={this.props.height}
+          xScale={xScale}
+          yScale={yScale}
+          margins={margins}
+        >
+          <CompletedDataSeries
+            data={sortedData}
+            size={size}
+            xScale={xScale}
+            yScale={yScale}
+            olor="cornflowerblue"
+          />
+          <Tooltip xScale={xScale} yScale={yScale} />
+        </Chart>
+      </div>
     )
   }
 }
@@ -53,10 +70,10 @@ export default connect(mapState, mapDispatch)(LineChart)
 
 LineChart.propTypes = {
   width: PropTypes.number,
-  height: PropTypes.number
+  height: PropTypes.number,
 };
 
 LineChart.defaultProps = {
   width: 300,
-  height: 300
+  height: 300,
 };
