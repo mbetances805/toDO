@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as d3Axis from 'd3-axis'
-import { select } from 'd3-selection'
+import { select as selectCurrent } from 'd3-selection'
+import { timeFormat as dateFormat} from 'd3-time-format'
 
 class Axis extends Component{
   componentDidMount() {
@@ -20,7 +21,11 @@ class Axis extends Component{
           .tickPadding(2)
           .ticks(5)
 
-    select(this.axisElement).call(axis)
+    if (axisType === 'axisBottom') {
+      axis.tickFormat(dateFormat('%b %d'))
+    }
+
+    selectCurrent(this.axisElement).call(axis)
   }
 
   render() {

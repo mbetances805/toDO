@@ -13,6 +13,7 @@ class CompletedDataSeries extends Component{
           xScale = props.xScale;
 
       let path = d3.line()
+          .defined(function(d) { return d })
           .x(function(d) { return xScale(d.date) })
           .y(function(d) { return yScale(d.numberCompleted) })
           .curve(d3.curveLinear);

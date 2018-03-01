@@ -51,6 +51,7 @@ class Main extends Component {
       return (
         <div>
          <Link to="/list"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/151/151917.svg'} className="navigation-icons-logged" alt="Home" /></Link>
+         <Link to="/completed"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/271/271807.svg'} className="navigation-icons-logged" alt="Dashboard" /></Link>
          <a href="#" onClick={this.props.handleClick}><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/157/157938.svg'} className="navigation-icons-logged" alt="Logout" /></a>
         </div>
       )

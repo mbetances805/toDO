@@ -318,6 +318,11 @@ input::placeholder {
   fill: #5e8dc9;
 }
 
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
 /* Media Options */
 @media only screen and (max-width: 750px) {
   .navigation-bar {
