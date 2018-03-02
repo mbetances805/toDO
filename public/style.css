@@ -305,7 +305,40 @@ input::placeholder {
   font-size: 1.5vmin;
 }
 
+/* Dashboard */
+.dashboard {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.total-active {
+  grid-column: 2;
+  grid-row: 3;
+  text-align: center;
+}
+
+.month-completed {
+  grid-column: 2;
+  grid-row: 5;
+  text-align: center;
+}
+
+.month-created {
+  grid-column: 2;
+  grid-row: 7;
+  text-align: center;
+}
+
 /* Line Graph */
+.chart-container {
+  grid-column: 4 / span 7;
+  grid-row: 2 / span 7;
+}
+
 .completed-line-graph {
   text-align: center;
 }

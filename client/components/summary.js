@@ -2,13 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LineChart from './lineChart'
 import { timeParse } from 'd3-time-format'
-import { fetchActivities } from '../store/activity'
 
 class Summary extends Component {
-  componentDidMount() {
-    const { userId } = this.props;
-    this.props.getActivities(userId)
-  }
   render() {
     const generateCompletedTallyByDate = () => {
       let completedByDateObj = {};
@@ -40,19 +35,13 @@ class Summary extends Component {
 
 
     return (
-      <LineChart data={generateCompletedTallyByDate()} />
+      <LineChart className="line-chart" data={generateCompletedTallyByDate()} />
     )
   }
 }
 
-const mapState = state => ({
-  userId: state.user.id,
-  activities: state.activity.allActivities
-});
-const mapDispatch = dispatch => ({
-  getActivities: (id) => {
-    dispatch(fetchActivities(id))
-  }
-});
+const mapState = null;
+
+const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(Summary)
