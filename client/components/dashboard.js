@@ -62,22 +62,46 @@ class Dashboard extends Component {
     return (
       <div className='dashboard'>
         <div className='total-active'>
-          {this.caculateTotalActive()}
-          <div className='active-dashboard-summary'>
+          <div className='total-active-number'>
+            {this.caculateTotalActive()}
+          </div>
+          <div className='total-active-title'>
             Active
           </div>
         </div>
         <div className='month-completed'>
-          <div className='total-month-completed'>
+          <div className='dashboard-image'>
+            <img
+              width='20px'
+              height='20px'
+              src={'https://image.flaticon.com/icons/svg/291/291201.svg'}
+            />
+          </div>
+          <div className='divider'>
+            |
+          </div>
+          <div className='month-completed-number'>
             {this.calculateTotalMonthsCompleted()}
-          <div>
-            Completed
+          </div>
+          <div className='total-month-completed-title'>
+            Done
           </div>
         </div>
-        </div>
         <div className='month-created'>
-          {this.calculateActivitiesAdded()}
-          <div>
+          <div className='dashboard-image'>
+            <img
+              width='20px'
+              height='20px'
+              src={'https://image.flaticon.com/icons/svg/753/753254.svg'}
+            />
+          </div>
+          <div className='divider'>
+            |
+          </div>
+          <div className='month-created-number'>
+            {this.calculateActivitiesAdded()}
+          </div>
+          <div className='total-month-created-title'>
             New
           </div>
         </div>

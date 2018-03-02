@@ -318,19 +318,52 @@ input::placeholder {
 .total-active {
   grid-column: 2;
   grid-row: 3;
-  text-align: center;
 }
 
 .month-completed {
   grid-column: 2;
   grid-row: 5;
-  text-align: center;
 }
 
 .month-created {
   grid-column: 2;
   grid-row: 7;
+}
+
+.total-active, .month-completed, .month-created {
+  /* border-style: dotted; */
+  border-color: lightgrey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
+  vertical-align: middle;
+  line-height: normal;
+  width: 100px;
+  height: 50px;
+  color: darkslateblue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+
+.total-active-number, .month-completed-number, .month-created-number {
+  font-size: 20px;
+  grid-column: 3;
+}
+
+.total-active-title, .total-month-completed-title, .total-month-created-title {
+  font-size: 10px;
+  grid-column: 3;
+}
+
+.divider {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.dashboard-image {
+  display: inline-block;
+  grid-column: 1;
+  grid-row: 1 / span 2;
 }
 
 /* Line Graph */
