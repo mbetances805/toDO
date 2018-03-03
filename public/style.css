@@ -342,6 +342,7 @@ input::placeholder {
   color: darkslateblue;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   padding: 10px;
 }
 
@@ -358,12 +359,14 @@ input::placeholder {
 .divider {
   grid-column: 2;
   grid-row: 1 / span 2;
+  margin: auto;
 }
 
 .dashboard-image {
   display: inline-block;
   grid-column: 1;
   grid-row: 1 / span 2;
+  margin: auto;
 }
 
 /* Line Graph */

@@ -62,6 +62,16 @@ class Dashboard extends Component {
     return (
       <div className='dashboard'>
         <div className='total-active'>
+          <div className='dashboard-image'>
+            <img
+              width='20px'
+              height='20px'
+              src={'https://image.flaticon.com/icons/svg/138/138849.svg'} 
+            />
+          </div>
+          <div className='divider'>
+            |
+          </div>
           <div className='total-active-number'>
             {this.caculateTotalActive()}
           </div>
