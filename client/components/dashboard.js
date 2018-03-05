@@ -29,9 +29,9 @@ class Dashboard extends Component {
 
     activities.forEach(activity => {
       if (activity.activityStatus === 'inactive') {
-        let updatedDate = new Date(activity.updatedAt);
+        let updatedDate = new Date(activity.updatedAt.slice(0, -1));
         let updatedMonth = updatedDate.getMonth();
-
+        
         if (updatedMonth === month) {
           completedTotal++;
         }

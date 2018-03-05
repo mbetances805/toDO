@@ -14,7 +14,6 @@ class LineChart extends Component {
         size = {width: this.props.width, height: this.props.height};
 
     let sortedData = [... data]
-
     sortedData = sortedData.sort((a, b) => {
       return descending(a.date, b.date)
     });

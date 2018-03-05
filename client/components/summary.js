@@ -11,13 +11,15 @@ class Summary extends Component {
       const { activities } = this.props;
 
       activities.forEach(activity => {
-        let updatedDateSub = activity.updatedAt.substring(0, 10);
-        if (completedByDateObj[updatedDateSub]) {
-          let counter = completedByDateObj[updatedDateSub];
-          counter++;
-          completedByDateObj[updatedDateSub] = counter;
-        } else {
-          completedByDateObj[updatedDateSub] = 1;
+        if (activity.activityStatus === 'inactive'){
+          let updatedDateSub = activity.updatedAt.substring(0, 10);
+          if (completedByDateObj[updatedDateSub]) {
+            let counter = completedByDateObj[updatedDateSub];
+            counter++;
+            completedByDateObj[updatedDateSub] = counter;
+          } else {
+            completedByDateObj[updatedDateSub] = 1;
+          }
         }
       })
 
