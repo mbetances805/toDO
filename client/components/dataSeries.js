@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 // import { line } from 'd3-shape'
 import * as d3 from 'd3'
-import CompletedLineGraph from './completedLineGraph'
+import LinePath from './linePath'
 
-class CompletedDataSeries extends Component{
+class DataSeries extends Component{
   render() {
       let self = this,
           props = this.props,
@@ -15,11 +15,11 @@ class CompletedDataSeries extends Component{
       let path = d3.line()
           .defined(function(d) { return d })
           .x(function(d) { return xScale(d.date) })
-          .y(function(d) { return yScale(d.numberCompleted) })
+          .y(function(d) { return yScale(d.tally) })
           .curve(d3.curveLinear);
 
     return (
-      <CompletedLineGraph path={path(this.props.data)} color={this.props.color} />
+      <LinePath path={path(this.props.data)} color={this.props.color} />
     )
   }
 }
@@ -27,14 +27,14 @@ class CompletedDataSeries extends Component{
 const mapState = null;
 const mapDispatch = null;
 
-export default connect(mapState, mapDispatch)(CompletedDataSeries)
+export default connect(mapState, mapDispatch)(DataSeries)
 
-CompletedDataSeries.propTypes = {
+DataSeries.propTypes = {
   data: PropTypes.array,
   interpolate: PropTypes.string
 }
 
-CompletedDataSeries.defaultProps = {
+DataSeries.defaultProps = {
   data: [],
   interpolate: 'linear'
 }

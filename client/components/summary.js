@@ -5,8 +5,10 @@ import { timeParse } from 'd3-time-format'
 
 class Summary extends Component {
   render() {
-    const generateCompletedTallyByDate = () => {
+    // need to optimize this function
+    const generateTally = () => {
       let completedByDateObj = {};
+      let createdByDateObj = {};
       let parseTime = timeParse('%Y-%m');
       const { activities } = this.props;
 
@@ -21,21 +23,39 @@ class Summary extends Component {
             completedByDateObj[updatedDateSub] = 1;
           }
         }
+        
+        let createdDateSub = activity.createdAt.substring(0, 7);
+        if (createdByDateObj[createdDateSub]) {
+          let counter = createdByDateObj[createdDateSub];
+          counter++;
+          createdByDateObj[createdDateSub] = counter;
+        } else {
+          createdByDateObj[createdDateSub] = 1;
+        }
       })
+      
       let arrayOfDatesTally = (function () {
         let completedByDateArray = [];
+        let createdByDateArray = [];
         for (let key in completedByDateObj) {
-          let formattedDate = parseTime(key)
-          completedByDateArray.push({date: formattedDate, numberCompleted: completedByDateObj[key]})
+          let formattedDate = parseTime(key);
+          completedByDateArray.push({date: formattedDate, tally: completedByDateObj[key]})
         }
-        return completedByDateArray
+        for (let key in createdByDateObj) {
+          let formattedDate = parseTime(key);
+          createdByDateArray.push({date: formattedDate, tally: createdByDateObj[key]})
+        }
+        
+        let tallyArray = [completedByDateArray, createdByDateArray];
+        return tallyArray
       })()
+      
       return arrayOfDatesTally
     }
 
 
     return (
-      <LineChart className="line-chart" data={generateCompletedTallyByDate()} />
+      <LineChart className="line-chart" data={generateTally()} />
     )
   }
 }

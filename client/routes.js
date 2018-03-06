@@ -4,7 +4,7 @@ import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
 import {Main, Login, Signup, OpenActivities,
-  Welcome, ActivityLineGraph, Dashboard} from './components'
+  Welcome, Dashboard} from './components'
 import {me} from './store'
 
 /**

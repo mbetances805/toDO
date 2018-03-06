@@ -35,5 +35,5 @@ Chart.propTypes = {
 }
 
 Chart.defaultProps = {
-  title: 'Total Completed by Month'
+  title: 'Created vs. Completed by Month'
 }
