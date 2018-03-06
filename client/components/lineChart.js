@@ -21,15 +21,15 @@ class LineChart extends Component {
     let margins = {top: 2, right: 15, bottom: 20, left: 20};
 
     // calculate the min and max of the x and y axis based on our data
-    let maxDate = Math.max.apply(Math, data.map((element) => { return element.date }))
-    let minDate = Math.min.apply(Math, data.map((element) => { return  element.date}))
+    // let maxDate = Math.max.apply(Math, data.map((element) => { return element.date }))
+    // let minDate = Math.min.apply(Math, data.map((element) => { return  element.date}))
     let maxNumberCompleted = Math.max.apply(Math, data.map((element) => {
         return element.numberCompleted;
       }
     ))
 
     let xScale = scaleTime()
-        .domain([new Date(minDate), new Date(maxDate)])
+        .domain([new Date(2017, 11, 1), new Date(2018, 11, 31)])
         .range([margins.left, this.props.width - margins.left - margins.right]);
 
     let yScale = scaleLinear()

@@ -35,5 +35,5 @@ Chart.propTypes = {
 }
 
 Chart.defaultProps = {
-  title: 'Need to Update to BAR GRAPH: LINE GRAPH MAKES NO SENSE Completed Activities by Date'
+  title: 'Total Completed by Month'
 }

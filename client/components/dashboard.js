@@ -31,7 +31,7 @@ class Dashboard extends Component {
       if (activity.activityStatus === 'inactive') {
         let updatedDate = new Date(activity.updatedAt.slice(0, -1));
         let updatedMonth = updatedDate.getMonth();
-        
+
         if (updatedMonth === month) {
           completedTotal++;
         }
@@ -66,7 +66,7 @@ class Dashboard extends Component {
             <img
               width='20px'
               height='20px'
-              src={'https://image.flaticon.com/icons/svg/138/138849.svg'} 
+              src={'https://image.flaticon.com/icons/svg/138/138849.svg'}
             />
           </div>
           <div className='divider'>

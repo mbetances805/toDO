@@ -19,7 +19,7 @@ class Axis extends Component{
           .scale(this.props.scale)
           .tickSize(this.props.tickSize)
           .tickPadding(2)
-          .ticks(5)
+          .ticks(4)
 
     if (axisType === 'axisBottom') {
       axis.tickFormat(dateFormat('%b %d'))

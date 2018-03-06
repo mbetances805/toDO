@@ -7,12 +7,12 @@ class Summary extends Component {
   render() {
     const generateCompletedTallyByDate = () => {
       let completedByDateObj = {};
-      let parseTime = timeParse('%Y-%m-%d');
+      let parseTime = timeParse('%Y-%m');
       const { activities } = this.props;
 
       activities.forEach(activity => {
         if (activity.activityStatus === 'inactive'){
-          let updatedDateSub = activity.updatedAt.substring(0, 10);
+          let updatedDateSub = activity.updatedAt.substring(0, 7);
           if (completedByDateObj[updatedDateSub]) {
             let counter = completedByDateObj[updatedDateSub];
             counter++;
@@ -22,7 +22,6 @@ class Summary extends Component {
           }
         }
       })
-
       let arrayOfDatesTally = (function () {
         let completedByDateArray = [];
         for (let key in completedByDateObj) {
@@ -31,7 +30,6 @@ class Summary extends Component {
         }
         return completedByDateArray
       })()
-
       return arrayOfDatesTally
     }
 
