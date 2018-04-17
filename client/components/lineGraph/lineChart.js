@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { scaleTime, scaleLinear} from 'd3-scale'
-import Chart from './chart'
+import Chart from '../chart'
 import DataSeries from './dataSeries'
 import { descending } from 'd3-array'
 // import Tooltip from './tooltip'
@@ -31,7 +31,7 @@ class LineChart extends Component {
       let completedMax = Math.max.apply(Math, completedDataSeries.map((element) => {
         return element.tally;
       }))
-      
+
       let createdMax = Math.max.apply(Math, createdDataSeries.map((element) => {
         return element.tally
       }))
@@ -60,14 +60,14 @@ class LineChart extends Component {
             size={size}
             xScale={xScale}
             yScale={yScale}
-            color="limegreen"
+            color="midnightblue"
           />
           <DataSeries
             data={sortedCreatedDataSeries}
             size={size}
             xScale={xScale}
             yScale={yScale}
-            color="cornflowerblue"
+            color="lightseagreen"
           />
           {/* Tooltip Component is still WIP
           <Tooltip

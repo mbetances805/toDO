@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import * as d3 from 'd3'
 import LinePath from './linePath'
 
-class DataSeries extends Component{
+class LineDataSeries extends Component{
   render() {
       let self = this,
           props = this.props,
@@ -27,14 +27,13 @@ class DataSeries extends Component{
 const mapState = null;
 const mapDispatch = null;
 
-export default connect(mapState, mapDispatch)(DataSeries)
+export default connect(mapState, mapDispatch)(LineDataSeries)
 
-DataSeries.propTypes = {
+LineDataSeries.propTypes = {
   data: PropTypes.array,
-  interpolate: PropTypes.string
 }
 
-DataSeries.defaultProps = {
+LineDataSeries.defaultProps = {
   data: [],
   interpolate: 'linear'
 }

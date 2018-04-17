@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import Axes from './axes'
+import Axes from './lineGraph/axes'
 
 class Chart extends Component {
   render() {
@@ -35,5 +35,5 @@ Chart.propTypes = {
 }
 
 Chart.defaultProps = {
-  title: 'Created vs. Completed by Month'
+  title: 'New vs. Completed by Month'
 }

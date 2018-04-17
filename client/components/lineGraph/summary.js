@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import LineChart from './lineChart'
 import { timeParse } from 'd3-time-format'
 
-class Summary extends Component {
+class LineSummary extends Component {
   render() {
     // need to optimize this function
     const generateTally = () => {
@@ -23,7 +23,7 @@ class Summary extends Component {
             completedByDateObj[updatedDateSub] = 1;
           }
         }
-        
+
         let createdDateSub = activity.createdAt.substring(0, 7);
         if (createdByDateObj[createdDateSub]) {
           let counter = createdByDateObj[createdDateSub];
@@ -33,7 +33,7 @@ class Summary extends Component {
           createdByDateObj[createdDateSub] = 1;
         }
       })
-      
+
       let arrayOfDatesTally = (function () {
         let completedByDateArray = [];
         let createdByDateArray = [];
@@ -45,11 +45,11 @@ class Summary extends Component {
           let formattedDate = parseTime(key);
           createdByDateArray.push({date: formattedDate, tally: createdByDateObj[key]})
         }
-        
+
         let tallyArray = [completedByDateArray, createdByDateArray];
         return tallyArray
       })()
-      
+
       return arrayOfDatesTally
     }
 
@@ -64,4 +64,4 @@ const mapState = null;
 
 const mapDispatch = null;
 
-export default connect(mapState, mapDispatch)(Summary)
+export default connect(mapState, mapDispatch)(LineSummary)

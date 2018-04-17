@@ -50,17 +50,71 @@ class Main extends Component {
     if (this.props.isLoggedIn) {
       return (
         <div>
-         <Link to="/list"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/151/151917.svg'} className="navigation-icons-logged" alt="Home" /></Link>
-         <Link to="/completed"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/271/271807.svg'} className="navigation-icons-logged" alt="Dashboard" /></Link>
-         <a href="#" onClick={this.props.handleClick}><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/157/157938.svg'} className="navigation-icons-logged" alt="Logout" /></a>
+          <Link to="/list">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/151/151917.svg'}
+              className="navigation-icons-logged"
+              alt="Home"
+            />
+          </Link>
+          <Link to="/completed">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/2/2204.svg'}
+              className="navigation-icons-logged"
+              alt="Dashboard"
+            />
+          </Link>
+          <a
+          href="#"
+          onClick={this.props.handleClick}
+          >
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/157/157938.svg'}
+              className="navigation-icons-logged"
+              alt="Logout"
+            />
+          </a>
         </div>
       )
      } else {
        return (
         <div>
-          <Link to="/welcome"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/263/263115.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="Home" /></Link>
-          <Link to="/login"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/54/54815.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="Login" /></Link>
-          <Link to="/signup"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/134/134105.svg'} onClick={this.hoverMenu} className="navigation-icons" alt="Sign Up" /></Link>
+          <Link to="/welcome">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/263/263115.svg'}
+              onClick={this.hoverMenu}
+              className="navigation-icons"
+              alt="Home"
+            />
+          </Link>
+          <Link to="/login">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/54/54815.svg'}
+              onClick={this.hoverMenu}
+              className="navigation-icons"
+              alt="Login"
+            />
+          </Link>
+          <Link to="/signup">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/134/134105.svg'}
+              onClick={this.hoverMenu}
+              className="navigation-icons"
+              alt="Sign Up"
+            />
+          </Link>
         </div>
       )
      }
@@ -98,9 +152,35 @@ class Main extends Component {
     return (
       <div>
         <div id="top-right-corner-icons">
-          <a href="https://github.com/mbetances805/toDO"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/25/25231.svg'} className="navigation-icons" style={{padding: '10px'}} alt="github" /></a>
-          <a href="https://www.linkedin.com/in/mariabetances/"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/25/25320.svg'} className="navigation-icons" style={{padding: '10px'}} alt="linkedIn" /></a>
-          <a href="https://youtu.be/OXuQUxuyuFo"><img width="25" height="25" src={'https://image.flaticon.com/icons/svg/152/152810.svg'} className="navigation-icons" style={{padding: '10px'}} alt="screencast" /></a>
+          <a href="https://github.com/mbetances805/toDO">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/25/25231.svg'}
+              className="navigation-icons"
+              style={{padding: '10px'}}
+              alt="github"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/mariabetances/">
+            <img width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/25/25320.svg'}
+              className="navigation-icons"
+              style={{padding: '10px'}}
+              alt="linkedIn"
+            />
+          </a>
+          <a href="https://youtu.be/OXuQUxuyuFo">
+            <img
+              width="25"
+              height="25"
+              src={'https://image.flaticon.com/icons/svg/152/152810.svg'}
+              className="navigation-icons"
+              style={{padding: '10px'}}
+              alt="screencast"
+            />
+          </a>
         </div>
         <nav className="navigation-bar">
           {

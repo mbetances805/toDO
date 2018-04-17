@@ -330,6 +330,28 @@ input::placeholder {
   grid-row: 7;
 }
 
+#current-month-header {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 10px;
+  color: white;
+}
+
+#month-summary-container {
+  grid-column: 2 /span 2;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 0.5fr);
+  background-color: #534A8D;
+  z-index: -1;
+  font-family: 'Muli', sans-serif;
+  font-size: 20px;
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
 .total-active, .month-completed, .month-created {
   /* border-style: dotted; */
   border-color: lightgrey;
@@ -341,32 +363,58 @@ input::placeholder {
   height: 50px;
   color: darkslateblue;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr);
-  padding: 10px;
+  padding: 5px;
+  margin: auto;
+  background-color: white;
 }
 
-.total-active-number, .month-completed-number, .month-created-number {
-  font-size: 20px;
-  grid-column: 3;
+.total-active {
+  grid-row: 2;
+  color: indianred;
+}
+
+.month-completed {
+  grid-row: 4;
+  color: midnightblue;
+}
+
+.month-created {
+  grid-row: 6;
+  color: lightseagreen;
 }
 
 .total-active-title, .total-month-completed-title, .total-month-created-title {
   font-size: 10px;
-  grid-column: 3;
+  grid-row: 2;
 }
 
-.divider {
-  grid-column: 2;
-  grid-row: 1 / span 2;
+#overall-summary-container {
+  grid-column: 10 /span 2;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 0.5fr);
+  background-color: #2C6590;
+  width: 100px;
   margin: auto;
+  color: white;
 }
 
-.dashboard-image {
-  display: inline-block;
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  margin: auto;
+#overall-summary-header {
+  grid-row: 1;
+  text-align: center;
+}
+
+.most-active-day {
+  grid-row: 2;
+  text-align: center;
+  padding: 10px;
+}
+
+.overall-summary-details {
+  font-size: 10px;
 }
 
 /* Line Graph */
@@ -377,6 +425,8 @@ input::placeholder {
 
 .completed-line-graph {
   text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
 }
 
 .focus {
