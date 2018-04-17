@@ -62,13 +62,13 @@ class LineChart extends Component {
             yScale={yScale}
             color="midnightblue"
           />
-          <DataSeries
+          {/*}<DataSeries
             data={sortedCreatedDataSeries}
             size={size}
             xScale={xScale}
             yScale={yScale}
             color="lightseagreen"
-          />
+          />*/}
           {/* Tooltip Component is still WIP
           <Tooltip
             xScale={xScale}

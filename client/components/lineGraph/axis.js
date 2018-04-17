@@ -22,7 +22,7 @@ class Axis extends Component{
           .ticks(4)
 
     if (axisType === 'axisBottom') {
-      axis.tickFormat(dateFormat('%b %d'))
+      axis.tickFormat(dateFormat('%b'))
     }
 
     selectCurrent(this.axisElement).call(axis)
