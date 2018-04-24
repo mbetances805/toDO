@@ -340,7 +340,7 @@ input::placeholder {
 }
 
 #month-summary-container {
-  grid-column: 2 /span 2;
+  grid-column: 2 /span 4;
   grid-row: 3;
   display: grid;
   grid-template-columns: 1fr;
@@ -350,6 +350,9 @@ input::placeholder {
   font-family: 'Muli', sans-serif;
   font-size: 20px;
   background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  max-width: 10vw;
+  min-width: 5vw;
+  margin: auto;
 }
 
 .total-active, .month-completed, .month-created {
@@ -493,7 +496,13 @@ input::placeholder {
   }
 }
 
-@media only screen and (max-width: 640px) {
+@media (max-width: 1246px) {
+  #month-summary-container {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
   .container {
     width: 640px;
   }
